@@ -1,0 +1,4 @@
+All Azure Storage Accounts#CredCode#$StorageAccounts = Get-AzStorageAccount
+All Azure Storage Accounts#CredCode#$StorageAccounts | Export-Csv -Path $FinalResultFile -NoTypeInformation
+All Azure Storage Accounts#CredCode#
+All Azure Storage Accounts#CredCode#

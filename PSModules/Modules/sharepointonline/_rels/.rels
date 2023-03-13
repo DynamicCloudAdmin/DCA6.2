@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+  <Relationship Type="http://schemas.microsoft.com/packaging/2010/07/manifest" Target="/Microsoft.Online.SharePoint.PowerShell.nuspec" Id="R8E6F1D442AF592F7" />
+  <Relationship Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="/package/services/metadata/core-properties/f398c5c385b8425c92d79667981a5fb3.psmdcp" Id="R9947C7EDBA2F9690" />
+</Relationships>

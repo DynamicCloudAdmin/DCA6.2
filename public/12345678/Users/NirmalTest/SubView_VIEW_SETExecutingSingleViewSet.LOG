@@ -1,0 +1,44 @@
+Executing View Set: SubView VIEW SET
+TRP Key Reported: 12345678
+Single View Set Execution By user
+View Set Matched File View Set Name: SubView VIEW SET AND User Initiated View Set Name: SubView VIEW SET
+Processing View Set: SubView VIEW SET
+Checking View Set Enable-Disable Status: SubView VIEW SET
+Since User Initiated - No Need to check Enable-Disable Status of View Set
+VIEW SET:ENABLED
+[Checking All VIEWS in View Set]
+VIEW SET: SubView VIEW SET
+Executing MODULE: Get Office Subcription
+Collecting Module Target: Get Office Subcription
+Module Target: All Office
+Connection String: Connect-MSOLService#
+ModulesToLoad: MSOnline#
+Required PowerShell Modules Were Loaded Successfully!
+View Type: View Set
+View Tenant: Customer-J-OFFICE Tenant
+View Module: Get Office Subcription
+View Module Target: All Office
+Checking Tenant and Module Targets...
+Tenant Target Reported is OFFICE AND Module Target is All Office
+Checking if both the targets match...
+Module and Tenant Targets matched-OK
+FinalResultFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\Get_Office_SubcriptionCustomer-J-OFFICE_Tenant.CSV
+FinalLogFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\Get_Office_SubcriptionCustomer-J-OFFICE_Tenant.LOG
+View Module Target:OFFICE
+Collecting Tenant Details: Customer-J-OFFICE Tenant
+20-02-2023 19:01:07,Office UserName: global.assessment@orckestra.com
+20-02-2023 19:01:07,Office Password: NOTSHOWN
+20-02-2023 19:01:07,SharePoint Admin URL: https://orckestra.com-Admin.SharePoint.com
+Starting Connection Now...
+Connection String READY for OFFICE
+String Item: Connect-MSOLService
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MsolService -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+Checking if already connected...
+NOT Already Connected...
+Connecting To: global.assessment@orckestra.com Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MsolService -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+Failed to Connect
+Error: Authentication Error: Unexpected authentication failure.
+Error: Previous Connection Failed
+Aborting...
+VIEWEXECUTED,DONE,
+--COMPLETED--

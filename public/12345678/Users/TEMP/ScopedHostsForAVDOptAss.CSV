@@ -1,0 +1,17 @@
+Host Pool, Session Host,ResGroup
+EngineeringTest,HB-AVD-ET-1,unc_prod_wvd_hostpool_rg
+HB-AVD-Trusteer-W11,HB-AVD-W11T-2,unc_prod_wvd_hostpool_rg
+HB-AVD-W11,HB-AVD-W11-5,unc_prod_wvd_hostpool_rg
+HB-INTUNE-Test,HB-AVD-INTN-2,unc_prod_wvd_hostpool_rg
+HB-Multisession-Frontline,HB-AVD-HD-9,unc_prod_wvd_hostpool_rg
+HB-Multisession-Frontline-W11,HB-AVD-HD-2,unc_prod_wvd_hostpool_rg
+HB-Multisession-IT,HB-AVD-IT-4,unc_prod_wvd_hostpool_rg
+HB-Multisession-Standard,HB-AVD-9,unc_prod_wvd_hostpool_rg
+HB-Multisession-Trusteer,HB-AVD-IBMT-3,unc_prod_wvd_hostpool_rg
+HB-RA-Litigation,HB-AVD-LIT-9,unc_prod_wvd_hostpool_rg
+HB-RA-Tax1,HB-RA-TAX-0,unc_prod_wvd_hostpool_rg
+HB-RA-Tax2,HB-RA-Tax2-0,unc_prod_wvd_hostpool_rg
+HB-RemoteApps-1,HB-WVD-RA-1-0,unc_prod_wvd_hostpool_rg
+HB-RemoteApps-2,HB-WVD-RA-2-0,unc_prod_wvd_hostpool_rg
+HB-WVD-BetaTest,HB-AVD-BETA-1,unc_prod_wvd_hostpool_rg
+HB-ZeroSystems-POC,HB-AVD-ZERO-1,unc_prod_wvd_hostpool_rg

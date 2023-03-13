@@ -1,0 +1,261 @@
+Host Pool, RDP Property, Value 1, Value 2, Status
+EngineeringTest,audiomode,i,0
+EngineeringTest,videoplaybackmode,i,1
+EngineeringTest,redirectclipboard,i,1
+EngineeringTest,redirectprinters,i,1
+EngineeringTest,devicestoredirect,s,*
+EngineeringTest,redirectcomports,i,1
+EngineeringTest,redirectsmartcards,i,1
+EngineeringTest,usbdevicestoredirect,s,*
+EngineeringTest,enablecredsspsupport,i,1
+EngineeringTest,audiocapturemode,i,1
+EngineeringTest,use multimon,i,1
+EngineeringTest,redirected video capture encoding quality,i,1
+EngineeringTest,camerastoredirect,s,*
+EngineeringTest,maximizetocurrentdisplays,i,1
+EngineeringTest,singlemoninwindowedmode,i,1
+EngineeringTest,screen mode id,i,2
+EngineeringTest,smart sizing,i,1
+HB-AVD-Trusteer-W11,audiomode,i,0
+HB-AVD-Trusteer-W11,videoplaybackmode,i,1
+HB-AVD-Trusteer-W11,redirectclipboard,i,1
+HB-AVD-Trusteer-W11,redirectprinters,i,1
+HB-AVD-Trusteer-W11,devicestoredirect,s,*
+HB-AVD-Trusteer-W11,redirectcomports,i,1
+HB-AVD-Trusteer-W11,redirectsmartcards,i,1
+HB-AVD-Trusteer-W11,usbdevicestoredirect,s,*
+HB-AVD-Trusteer-W11,enablecredsspsupport,i,1
+HB-AVD-Trusteer-W11,audiocapturemode,i,1
+HB-AVD-Trusteer-W11,use multimon,i,1
+HB-AVD-Trusteer-W11,redirected video capture encoding quality,i,1
+HB-AVD-Trusteer-W11,camerastoredirect,s,*
+HB-AVD-Trusteer-W11,maximizetocurrentdisplays,i,1
+HB-AVD-Trusteer-W11,singlemoninwindowedmode,i,1
+HB-AVD-Trusteer-W11,screen mode id,i,2
+HB-AVD-Trusteer-W11,smart sizing,i,1
+HB-AVD-W11,audiomode,i,0
+HB-AVD-W11,videoplaybackmode,i,1
+HB-AVD-W11,redirectclipboard,i,1
+HB-AVD-W11,redirectprinters,i,1
+HB-AVD-W11,devicestoredirect,s,*
+HB-AVD-W11,redirectcomports,i,1
+HB-AVD-W11,redirectsmartcards,i,1
+HB-AVD-W11,usbdevicestoredirect,s,*
+HB-AVD-W11,enablecredsspsupport,i,1
+HB-AVD-W11,audiocapturemode,i,1
+HB-AVD-W11,use multimon,i,1
+HB-AVD-W11,redirected video capture encoding quality,i,1
+HB-AVD-W11,camerastoredirect,s,*
+HB-AVD-W11,maximizetocurrentdisplays,i,1
+HB-AVD-W11,singlemoninwindowedmode,i,1
+HB-AVD-W11,screen mode id,i,2
+HB-AVD-W11,smart sizing,i,1
+HB-INTUNE-Test,audiomode,i,0
+HB-INTUNE-Test,videoplaybackmode,i,1
+HB-INTUNE-Test,redirectclipboard,i,1
+HB-INTUNE-Test,redirectprinters,i,1
+HB-INTUNE-Test,devicestoredirect,s,*
+HB-INTUNE-Test,redirectcomports,i,1
+HB-INTUNE-Test,redirectsmartcards,i,1
+HB-INTUNE-Test,usbdevicestoredirect,s,*
+HB-INTUNE-Test,enablecredsspsupport,i,1
+HB-INTUNE-Test,audiocapturemode,i,1
+HB-INTUNE-Test,use multimon,i,1
+HB-INTUNE-Test,redirected video capture encoding quality,i,1
+HB-INTUNE-Test,camerastoredirect,s,*
+HB-INTUNE-Test,maximizetocurrentdisplays,i,1
+HB-INTUNE-Test,singlemoninwindowedmode,i,1
+HB-INTUNE-Test,screen mode id,i,2
+HB-INTUNE-Test,smart sizing,i,1
+HB-INTUNE-Test,autoreconnection enabled,i,1
+HB-Multisession-Frontline,redirected video capture encoding quality,i,1
+HB-Multisession-Frontline,camerastoredirect,s,*
+HB-Multisession-Frontline,use multimon,i,1
+HB-Multisession-Frontline,maximizetocurrentdisplays,i,1
+HB-Multisession-Frontline,singlemoninwindowedmode,i,1
+HB-Multisession-Frontline,screen mode id,i,2
+HB-Multisession-Frontline,smart sizing,i,1
+HB-Multisession-Frontline,drivestoredirect,s,*
+HB-Multisession-Frontline,redirectprinters,i,1
+HB-Multisession-Frontline,audiomode,i,0
+HB-Multisession-Frontline,videoplaybackmode,i,1
+HB-Multisession-Frontline,redirectclipboard,i,1
+HB-Multisession-Frontline,devicestoredirect,s,*
+HB-Multisession-Frontline,redirectcomports,i,1
+HB-Multisession-Frontline,redirectsmartcards,i,1
+HB-Multisession-Frontline,usbdevicestoredirect,s,*
+HB-Multisession-Frontline,enablecredsspsupport,i,1
+HB-Multisession-Frontline-W11,audiomode,i,0
+HB-Multisession-Frontline-W11,videoplaybackmode,i,1
+HB-Multisession-Frontline-W11,redirectclipboard,i,1
+HB-Multisession-Frontline-W11,redirectprinters,i,1
+HB-Multisession-Frontline-W11,devicestoredirect,s,*
+HB-Multisession-Frontline-W11,redirectcomports,i,1
+HB-Multisession-Frontline-W11,redirectsmartcards,i,1
+HB-Multisession-Frontline-W11,usbdevicestoredirect,s,*
+HB-Multisession-Frontline-W11,enablecredsspsupport,i,1
+HB-Multisession-Frontline-W11,audiocapturemode,i,1
+HB-Multisession-Frontline-W11,use multimon,i,1
+HB-Multisession-Frontline-W11,redirected video capture encoding quality,i,1
+HB-Multisession-Frontline-W11,camerastoredirect,s,*
+HB-Multisession-Frontline-W11,maximizetocurrentdisplays,i,1
+HB-Multisession-Frontline-W11,singlemoninwindowedmode,i,1
+HB-Multisession-Frontline-W11,screen mode id,i,2
+HB-Multisession-Frontline-W11,smart sizing,i,1
+HB-Multisession-IT,audiomode,i,0
+HB-Multisession-IT,videoplaybackmode,i,1
+HB-Multisession-IT,redirectclipboard,i,1
+HB-Multisession-IT,redirectprinters,i,1
+HB-Multisession-IT,devicestoredirect,s,*
+HB-Multisession-IT,redirectcomports,i,1
+HB-Multisession-IT,redirectsmartcards,i,1
+HB-Multisession-IT,usbdevicestoredirect,s,*
+HB-Multisession-IT,enablecredsspsupport,i,1
+HB-Multisession-IT,use multimon,i,1
+HB-Multisession-IT,audiocapturemode,i,1
+HB-Multisession-IT,redirected video capture encoding quality,i,1
+HB-Multisession-IT,camerastoredirect,s,*
+HB-Multisession-IT,maximizetocurrentdisplays,i,1
+HB-Multisession-IT,singlemoninwindowedmode,i,1
+HB-Multisession-IT,screen mode id,i,2
+HB-Multisession-IT,smart sizing,i,1
+HB-Multisession-Standard,audiomode,i,0
+HB-Multisession-Standard,videoplaybackmode,i,1
+HB-Multisession-Standard,redirectclipboard,i,1
+HB-Multisession-Standard,redirectprinters,i,1
+HB-Multisession-Standard,devicestoredirect,s,*
+HB-Multisession-Standard,redirectcomports,i,1
+HB-Multisession-Standard,redirectsmartcards,i,1
+HB-Multisession-Standard,usbdevicestoredirect,s,*
+HB-Multisession-Standard,enablecredsspsupport,i,1
+HB-Multisession-Standard,use multimon,i,1
+HB-Multisession-Standard,audiocapturemode,i,1
+HB-Multisession-Standard,redirected video capture encoding quality,i,1
+HB-Multisession-Standard,camerastoredirect,s,*
+HB-Multisession-Standard,maximizetocurrentdisplays,i,1
+HB-Multisession-Standard,singlemoninwindowedmode,i,1
+HB-Multisession-Standard,screen mode id,i,2
+HB-Multisession-Standard,smart sizing,i,1
+HB-Multisession-Trusteer,audiomode,i,0
+HB-Multisession-Trusteer,videoplaybackmode,i,1
+HB-Multisession-Trusteer,redirectclipboard,i,1
+HB-Multisession-Trusteer,redirectprinters,i,1
+HB-Multisession-Trusteer,devicestoredirect,s,*
+HB-Multisession-Trusteer,redirectcomports,i,1
+HB-Multisession-Trusteer,redirectsmartcards,i,1
+HB-Multisession-Trusteer,usbdevicestoredirect,s,*
+HB-Multisession-Trusteer,enablecredsspsupport,i,1
+HB-Multisession-Trusteer,use multimon,i,1
+HB-Multisession-Trusteer,audiocapturemode,i,1
+HB-Multisession-Trusteer,redirected video capture encoding quality,i,1
+HB-Multisession-Trusteer,camerastoredirect,s,*
+HB-Multisession-Trusteer,maximizetocurrentdisplays,i,1
+HB-Multisession-Trusteer,singlemoninwindowedmode,i,1
+HB-Multisession-Trusteer,screen mode id,i,2
+HB-Multisession-Trusteer,smart sizing,i,1
+HB-RA-Litigation,screen mode id,i,1
+HB-RA-Litigation,camerastoredirect,s,*
+HB-RA-Litigation,redirected video capture encoding quality,i,1
+HB-RA-Litigation,audiocapturemode,i,1
+HB-RA-Litigation,use multimon,i,0
+HB-RA-Litigation,dynamic resolution,i,1
+HB-RA-Litigation,drivestoredirect,s,*
+HB-RA-Litigation,audiomode,i,0
+HB-RA-Litigation,videoplaybackmode,i,1
+HB-RA-Litigation,redirectclipboard,i,1
+HB-RA-Litigation,redirectprinters,i,1
+HB-RA-Litigation,devicestoredirect,s,*
+HB-RA-Litigation,redirectcomports,i,1
+HB-RA-Litigation,redirectsmartcards,i,1
+HB-RA-Litigation,usbdevicestoredirect,s,*
+HB-RA-Litigation,enablecredsspsupport,i,1
+HB-RA-Litigation,encode redirected video capture,i,1
+HB-RA-Litigation,desktop size id,i,3
+HB-RA-Tax1,audiomode,i,0
+HB-RA-Tax1,videoplaybackmode,i,1
+HB-RA-Tax1,redirectclipboard,i,1
+HB-RA-Tax1,redirectprinters,i,1
+HB-RA-Tax1,devicestoredirect,s,*
+HB-RA-Tax1,redirectcomports,i,1
+HB-RA-Tax1,redirectsmartcards,i,1
+HB-RA-Tax1,usbdevicestoredirect,s,*
+HB-RA-Tax1,enablecredsspsupport,i,1
+HB-RA-Tax1,use multimon,i,1
+HB-RA-Tax1,audiocapturemode,i,1
+HB-RA-Tax1,redirected video capture encoding quality,i,1
+HB-RA-Tax1,camerastoredirect,s,*
+HB-RA-Tax1,maximizetocurrentdisplays,i,1
+HB-RA-Tax1,singlemoninwindowedmode,i,1
+HB-RA-Tax1,screen mode id,i,2
+HB-RA-Tax1,smart sizing,i,1
+HB-RA-Tax2,audiomode,i,0
+HB-RA-Tax2,videoplaybackmode,i,1
+HB-RA-Tax2,redirectclipboard,i,1
+HB-RA-Tax2,redirectprinters,i,1
+HB-RA-Tax2,devicestoredirect,s,*
+HB-RA-Tax2,redirectcomports,i,1
+HB-RA-Tax2,redirectsmartcards,i,1
+HB-RA-Tax2,usbdevicestoredirect,s,*
+HB-RA-Tax2,enablecredsspsupport,i,1
+HB-RA-Tax2,use multimon,i,1
+HB-RemoteApps-1,audiomode,i,0
+HB-RemoteApps-1,videoplaybackmode,i,1
+HB-RemoteApps-1,redirectclipboard,i,1
+HB-RemoteApps-1,redirectprinters,i,1
+HB-RemoteApps-1,devicestoredirect,s,*
+HB-RemoteApps-1,redirectcomports,i,1
+HB-RemoteApps-1,redirectsmartcards,i,1
+HB-RemoteApps-1,usbdevicestoredirect,s,*
+HB-RemoteApps-1,enablecredsspsupport,i,1
+HB-RemoteApps-1,use multimon,i,1
+HB-RemoteApps-2,audiomode,i,0
+HB-RemoteApps-2,videoplaybackmode,i,1
+HB-RemoteApps-2,redirectclipboard,i,1
+HB-RemoteApps-2,redirectprinters,i,1
+HB-RemoteApps-2,devicestoredirect,s,*
+HB-RemoteApps-2,redirectcomports,i,1
+HB-RemoteApps-2,redirectsmartcards,i,1
+HB-RemoteApps-2,usbdevicestoredirect,s,*
+HB-RemoteApps-2,enablecredsspsupport,i,1
+HB-RemoteApps-2,use multimon,i,1
+HB-RemoteApps-2,audiocapturemode,i,1
+HB-RemoteApps-2,redirected video capture encoding quality,i,1
+HB-RemoteApps-2,camerastoredirect,s,*
+HB-RemoteApps-2,maximizetocurrentdisplays,i,1
+HB-RemoteApps-2,singlemoninwindowedmode,i,1
+HB-RemoteApps-2,screen mode id,i,2
+HB-RemoteApps-2,smart sizing,i,1
+HB-WVD-BetaTest,screen mode id,i,2
+HB-WVD-BetaTest,singlemoninwindowedmode,i,1
+HB-WVD-BetaTest,maximizetocurrentdisplays,i,1
+HB-WVD-BetaTest,camerastoredirect,s,*
+HB-WVD-BetaTest,redirected video capture encoding quality,i,1
+HB-WVD-BetaTest,audiocapturemode,i,1
+HB-WVD-BetaTest,use multimon,i,1
+HB-WVD-BetaTest,drivestoredirect,s,*
+HB-WVD-BetaTest,audiomode,i,0
+HB-WVD-BetaTest,videoplaybackmode,i,1
+HB-WVD-BetaTest,redirectclipboard,i,1
+HB-WVD-BetaTest,redirectprinters,i,1
+HB-WVD-BetaTest,devicestoredirect,s,*
+HB-WVD-BetaTest,redirectcomports,i,1
+HB-WVD-BetaTest,redirectsmartcards,i,1
+HB-WVD-BetaTest,usbdevicestoredirect,s,*
+HB-WVD-BetaTest,enablecredsspsupport,i,1
+HB-ZeroSystems-POC,audiomode,i,0
+HB-ZeroSystems-POC,videoplaybackmode,i,1
+HB-ZeroSystems-POC,redirectclipboard,i,1
+HB-ZeroSystems-POC,redirectprinters,i,1
+HB-ZeroSystems-POC,devicestoredirect,s,*
+HB-ZeroSystems-POC,redirectcomports,i,1
+HB-ZeroSystems-POC,redirectsmartcards,i,1
+HB-ZeroSystems-POC,usbdevicestoredirect,s,*
+HB-ZeroSystems-POC,enablecredsspsupport,i,1
+HB-ZeroSystems-POC,audiocapturemode,i,1
+HB-ZeroSystems-POC,use multimon,i,1
+HB-ZeroSystems-POC,redirected video capture encoding quality,i,1
+HB-ZeroSystems-POC,camerastoredirect,s,*
+HB-ZeroSystems-POC,maximizetocurrentdisplays,i,1
+HB-ZeroSystems-POC,singlemoninwindowedmode,i,1
+HB-ZeroSystems-POC,screen mode id,i,2
+HB-ZeroSystems-POC,smart sizing,i,1

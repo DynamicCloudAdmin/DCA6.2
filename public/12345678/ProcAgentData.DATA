@@ -1,0 +1,100 @@
+View Name, View Type, Tenant, Module, Processing Status,  Processing, Day, Hour, Condition, Email Template, Enable/Disable, Modify
+Office 365 Assessment for Tenant, Single Column, Customer-A-OFFICE Tenant, Office 365 Compliance and Severity View-OVERALL, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Single Column View for Customer B, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, Tuesday, 11, Notify if Issues occur, New Email Template
+, SET , Modify
+Single Column View for Customer C, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Define Schedule, Friday, 14, Notify if Issues occur, New Email Template, SET , Modify
+Single Column View for Customer D, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+A View Set for Engineer, View Set, Used-From-View, Total Views: 4, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+AVD View For Tenant A, Single Column, Customer-D-AZURE Tenant, AVD Sessions VIEW, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+AVD View For Tenant B, Single Column, Customer-E-AZURE Tenant, AVD Sessions VIEW, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+AVD View For Tenant C, Single Column, Customer-F-AZURE Tenant, AVD Sessions VIEW, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+My AVD VIEW For All Customers, View Set, Used-From-View, Total Views: 3, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Single Column View for Customer A, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Customer-H-OFFICE Tenant-Office 365 Impact-Recommendation, Single Column, Customer-H-OFFICE Tenant, Office 365 Compliance and Severity View-OVERALL, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Customer-I-OFFICE Tenant-Office 365 Impact-Recommendation, Single Column, Customer-I-OFFICE Tenant, Office 365 Compliance and Severity View-OVERALL, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Customer-J-OFFICE Tenant-Office 365 Impact-Recommendation, Single Column, Customer-J-OFFICE Tenant, Office 365 Compliance and Severity View-OVERALL, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewNONE, Single Column, NONE, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-A-OFFICE Tenant, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-B-OFFICE Tenant, Single Column, Customer-B-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-C-OFFICE Tenant, Single Column, Customer-C-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewNONE, Single Column, NONE, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewNONE, Single Column, NONE, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewNONE, Single Column, NONE, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-G-OFFICE Tenant, Single Column, Customer-G-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-H-OFFICE Tenant, Single Column, Customer-H-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-I-OFFICE Tenant, Single Column, Customer-I-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Subscription ViewCustomer-J-OFFICE Tenant, Single Column, Customer-J-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-A-OFFICE Tenant, Single Column, Customer-A-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-B-OFFICE Tenant, Single Column, Customer-B-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-C-OFFICE Tenant, Single Column, Customer-C-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-G-OFFICE Tenant, Single Column, Customer-G-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-H-OFFICE Tenant, Single Column, Customer-H-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-I-OFFICE Tenant, Single Column, Customer-I-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubViewForALLCustomer-J-OFFICE Tenant, Single Column, Customer-J-OFFICE Tenant, Get Office Subcription, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+SubView VIEW SET, View Set, Used-From-View, Total Views: 7, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Customer-G-OFFICE Tenant-Office 365 Impact-Recommendation, Single Column, Customer-G-OFFICE Tenant, Office 365 Compliance and Severity View-OVERALL, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+A View Set For All, View Set, Used-From-View, Total Views: 14, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+RDP Properties ViewCustomer-D-AZURE Tenant, Single Column, Customer-D-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+RDP Properties ViewCustomer-E-AZURE Tenant, Single Column, Customer-E-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+RDP Properties ViewCustomer-F-AZURE Tenant, Single Column, Customer-F-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+All RDP Prop for all TenantsCustomer-D-AZURE Tenant, Single Column, Customer-D-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+All RDP Prop for all TenantsCustomer-E-AZURE Tenant, Single Column, Customer-E-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+All RDP Prop for all TenantsCustomer-F-AZURE Tenant, Single Column, Customer-F-AZURE Tenant, AVD Host Pool RDP Properties View, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+FSLogix Summary for Tenant, Single Column, Customer-E-AZURE Tenant, AVD FSLogix Containers Summary, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+FSLogixConfigAssessment, Single Column, Customer-E-AZURE Tenant, AVD FSLogix Configuration Consistency Assessment, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+Office Assessment for a Tenant, Single Column, Customer-A-OFFICE Tenant, Office 365 Compliance and Security Assessment, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+A New RDP Assessment View, Single Column, Customer-F-AZURE Tenant, AVD Host Pool RDP Properties Assessment, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+AVD Assessment for New Tenant, Single Column, Customer-D-AZURE Tenant, AVD Optimization Status Assessment, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+RCViewSet, View Set, Used-From-View, Total Views: 2, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+ANewOneNow, View Set, Used-From-View, Total Views: 4, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+ANewOneNowTWO, View Set, Used-From-View, Total Views: 4, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+ANewOneNowTWO, View Set, Used-From-View, Total Views: 4, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify
+ASINGLEONE, Single Column, Customer-A-OFFICE Tenant, Office 365 Compliance and Security Assessment, Enabled, Every 15 Minutes, NA, NA, NA, NA
+, SET , Modify

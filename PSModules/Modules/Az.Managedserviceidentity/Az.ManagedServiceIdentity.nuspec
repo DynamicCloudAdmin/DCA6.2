@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Az.ManagedServiceIdentity</id>
+    <version>0.7.1</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://aka.ms/azps-license</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <description>Microsoft Azure PowerShell - Managed Service Identity cmdlets for Azure Resource Manager in Windows PowerShell and PowerShell Core.  Manages user assigned identities in Azure Resource Manager.
+
+For more information on Managed Service Indentity, please visit the following: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/</description>
+    <releaseNotes>Update release with latest service features and serialization fixes</releaseNotes>
+    <copyright>Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Azure ResourceManager ARM MSI ManagedServiceIdentity Identity UserAssignedIdentities IAM PSModule PSIncludes_Cmdlet PSCmdlet_New-AzUserAssignedIdentity PSCmdlet_Get-AzUserAssignedIdentity PSCmdlet_Remove-AzUserAssignedIdentity PSCommand_New-AzUserAssignedIdentity PSCommand_Get-AzUserAssignedIdentity PSCommand_Remove-AzUserAssignedIdentity</tags>
+    <dependencies>
+      <dependency id="Az.Accounts" version="1.0.0" />
+    </dependencies>
+  </metadata>
+</package>

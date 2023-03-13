@@ -1,0 +1,5 @@
+TestCat,TestName,Severity
+Data Management,Ensure that external users cannot share files folders and sites they do not own,Executing
+Data Management,Ensure that external users cannot share files folders and sites they do not own,High
+Data Management,Ensure the customer lockbox feature is enabled,Executing
+Data Management,Ensure the customer lockbox feature is enabled,Passed

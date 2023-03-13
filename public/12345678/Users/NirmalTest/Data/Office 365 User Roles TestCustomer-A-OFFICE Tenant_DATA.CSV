@@ -1,0 +1,97 @@
+Role Name, Total Members, Status
+Company Administrator,4,OK
+Guest Inviter,1,OK
+User Administrator,5,OK
+Helpdesk Administrator,3,OK
+Service Support Administrator,2,OK
+Billing Administrator,1,OK
+Partner Tier1 Support,0,OK
+Partner Tier2 Support,0,OK
+Directory Readers,1,OK
+Directory Writers,0,OK
+Exchange Administrator,3,OK
+SharePoint Administrator,3,OK
+Skype for Business Administrator,2,OK
+Device Users,0,OK
+Azure AD Joined Device Local Administrator,0,OK
+Device Join,0,OK
+Workplace Device Join,0,OK
+Compliance Administrator,2,OK
+Directory Synchronization Accounts,0,OK
+Device Managers,0,OK
+Application Administrator,1,OK
+Application Developer,0,OK
+Security Reader,0,OK
+Security Administrator,1,OK
+Privileged Role Administrator,2,OK
+Intune Administrator,2,OK
+Cloud Application Administrator,1,OK
+Customer LockBox Access Approver,2,OK
+Dynamics 365 Administrator,2,OK
+Power BI Administrator,1,OK
+Conditional Access Administrator,0,OK
+Reports Reader,0,OK
+Message Center Reader,0,OK
+Azure Information Protection Administrator,0,OK
+Desktop Analytics Administrator,1,OK
+License Administrator,2,OK
+Cloud Device Administrator,2,OK
+Authentication Administrator,1,OK
+Privileged Authentication Administrator,2,OK
+Teams Communications Administrator,1,OK
+Teams Communications Support Engineer,1,OK
+Teams Communications Support Specialist,1,OK
+Teams Administrator,3,OK
+Insights Administrator,1,OK
+Message Center Privacy Reader,0,OK
+External ID User Flow Administrator,0,OK
+External ID User Flow Attribute Administrator,0,OK
+B2C IEF Keyset Administrator,0,OK
+B2C IEF Policy Administrator,0,OK
+External Identity Provider Administrator,0,OK
+Compliance Data Administrator,1,OK
+Security Operator,0,OK
+Kaizala Administrator,3,OK
+Global Reader,2,OK
+Search Administrator,1,OK
+Search Editor,1,OK
+Password Administrator,2,OK
+Printer Administrator,1,OK
+Printer Technician,1,OK
+Authentication Policy Administrator,1,OK
+Groups Administrator,2,OK
+Power Platform Administrator,1,OK
+Azure DevOps Administrator,0,OK
+Hybrid Identity Administrator,1,OK
+Office Apps Administrator,1,OK
+Network Administrator,1,OK
+Insights Business Leader,1,OK
+Teams Devices Administrator,1,OK
+Attack Simulation Administrator,0,OK
+Attack Payload Author,0,OK
+Usage Summary Reports Reader,0,OK
+Knowledge Administrator,1,OK
+Knowledge Manager,1,OK
+Domain Name Administrator,0,OK
+Attribute Definition Administrator,0,OK
+Attribute Assignment Administrator,0,OK
+Attribute Definition Reader,0,OK
+Attribute Assignment Reader,0,OK
+Exchange Recipient Administrator,1,OK
+Identity Governance Administrator,1,OK
+Cloud App Security Administrator,1,OK
+Windows Update Deployment Administrator,1,OK
+Windows 365 Administrator,1,OK
+Edge Administrator,0,OK
+Yammer Administrator,1,OK
+Authentication Extensibility Administrator,0,OK
+Virtual Visits Administrator,1,OK
+Insights Analyst,1,OK
+Microsoft Hardware Warranty Administrator,0,OK
+Microsoft Hardware Warranty Specialist,0,OK
+Tenant Creator,0,OK
+Lifecycle Workflows Administrator,0,OK
+Viva Goals Administrator,0,OK
+User Experience Success Manager,0,OK
+Permissions Management Administrator,0,OK
+Organizational Messages Writer,0,OK

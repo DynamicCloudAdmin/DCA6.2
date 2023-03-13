@@ -1,0 +1,320 @@
+BASIC,Collecting Module Target: Office 365 Compliance and Security Assessment
+Module Target: All Office
+Connection String: Connect-MSOLService#Connect-ExchangeOnline#Connect-AzureAD#Connect-MicrosoftTeams#Connect-IPPSSession#Connect-SPOService#
+ModulesToLoad: MSOnline#AzureAD#MicrosoftTeams#ExchangeOnlineManagement#Microsoft.Online.SharePoint.PowerShell
+View Type: Single Column
+View Tenant: Customer-A-OFFICE Tenant
+View Module: Office 365 Compliance and Security Assessment
+View Module Target: All Office
+BASIC,Checking Tenant and Module Targets...
+Tenant Target Reported is OFFICE AND Module Target is All Office
+Checking if both the targets match...
+BASIC,Module and Tenant Targets matched-OK
+BASIC,Required PowerShell Modules Were Loaded Successfully!
+FinalResultFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\Office_365_Compliance_and_Security_AssessmentCustomer-A-OFFICE_Tenant.CSV
+FinalLogFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\Office_365_Compliance_and_Security_AssessmentCustomer-A-OFFICE_Tenant.LOG
+BASIC,View Module Target:OFFICE
+Collecting Tenant Details: Customer-A-OFFICE Tenant
+25-02-2023 06:54:46,Office UserName: NirmalTest@DynamicPacks.Net
+25-02-2023 06:54:46,Office Password: NOTSHOWN
+25-02-2023 06:54:47,SharePoint Admin URL: https://DynamicPacks.Net-Admin.SharePoint.com
+Starting Connection Now...
+Connection String READY for OFFICE
+String Item: Connect-MSOLService
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MsolService -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+Checking if already connected...
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MsolService -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+BASIC,Connection Success
+Recording in AlreadyConnected
+String Item: Connect-ExchangeOnline
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-ExchangeOnline -Credential $Credential -ShowBanner:$false } -ArgumentList $Credential
+Checking if already connected...
+For Tenant: NirmalTest@DynamicPacks.Net
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-ExchangeOnline -Credential $Credential -ShowBanner:$false } -ArgumentList $Credential
+In CON String Now...
+BASIC,Failed to Connect
+Error: Unable to find type [Microsoft.PowerShell.Commands.PowerShellGet.Telemetry].
+String Item: Connect-AzureAD
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-AzureAD -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+Checking if already connected...
+For Tenant: NirmalTest@DynamicPacks.Net
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-AzureAD -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+BASIC,Connection Success
+Recording in AlreadyConnected
+String Item: Connect-MicrosoftTeams
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MicrosoftTeams -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+Checking if already connected...
+For Tenant: NirmalTest@DynamicPacks.Net
+For Tenant: NirmalTest@DynamicPacks.Net
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-MicrosoftTeams -Credential $Credential -WarningAction Ignore } -ArgumentList $Credential
+BASIC,Connection Success
+Recording in AlreadyConnected
+String Item: Connect-IPPSSession
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-IPPSSession -Credential $Credential -WarningAction SilentlyContinue } -ArgumentList $Credential
+Checking if already connected...
+For Tenant: NirmalTest@DynamicPacks.Net
+For Tenant: NirmalTest@DynamicPacks.Net
+For Tenant: NirmalTest@DynamicPacks.Net
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($Credential) Connect-IPPSSession -Credential $Credential -WarningAction SilentlyContinue } -ArgumentList $Credential
+In CON String Now...
+BASIC,Failed to Connect
+Error: Remote host method get_BufferSize is not implemented. Running the Get-Command command in a remote session reported the following error: Remote host method get_BufferSize is not implemented..
+String Item: Connect-SPOService
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($FinalSPURL,$Credential) Connect-SPOService -Url "$FinalSPURL" -Credential $Credential } -ArgumentList $FinalSPURL,$Credential
+Checking if already connected...
+For Tenant: NirmalTest@DynamicPacks.Net
+For Tenant: NirmalTest@DynamicPacks.Net
+For Tenant: NirmalTest@DynamicPacks.Net
+NOT Already Connected...
+BASIC,Connecting To: NirmalTest@DynamicPacks.Net Using Connection String: $R = Invoke-Command -ScriptBlock{param($FinalSPURL,$Credential) Connect-SPOService -Url "$FinalSPURL" -Credential $Credential } -ArgumentList $FinalSPURL,$Credential
+In CON String Now...
+BASIC,Failed to Connect
+Error: Could not connect to SharePoint Online.
+BASIC,Executing Module: Office 365 Compliance and Security Assessment
+BASIC,View Module Code:FOUND
+CODE:
+BASIC,[START: MODULE CODE: EXECUTING]
+CatForScript: ALL
+CDKey: 12345678
+ORGUser: NirmalTest
+ThisLUser: NirmalTest
+Target: Customer-A-OFFICE Tenant
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: USERS
+Executing: Office 365 Users Licensing Test
+Executing: Office 365 Users Deleted Test
+Executing: Office 365 Users Disabled Test
+Executing: Office 365 Users Reconciliation Test
+Executing: Office 365 Users Password Never Expires Test
+Executing: Office 365 Users Sync Test
+Executing: Office 365 Users Provisioning Test
+Executing: Office 365 Blocked Users Test
+Executing: Office 365 Users Not Changed Password Test
+Executing: Office 365 Users With Company Administrators Test
+Executing: Office 365 Users Deleted and Licensed Test
+Executing: Office 365 Groups Without Members Test
+Executing: Office 365 Groups Without Description Test
+No ErrorsFound
+Executed: USERS
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Users
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Licensing TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Deleted TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Disabled TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Reconciliation TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Password Never Expires TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Sync TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Provisioning TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Blocked Users TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Not Changed Password TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users With Company Administrators TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Deleted and Licensed TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Groups Without Members TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Groups Without Description TestCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: EXCHANGE ONLINE
+Executing: Office 365 Mailbox Sync Test
+Executing: Office 365 Mailbox Hidden From Address List Test
+Executing: Exchange Online External Address Forwarding Test
+Executing: Exchange Online Litigation Hold Test
+Executing: Exchange Online Mailbox Auditing Test
+Executing: Office 365 Exchange Online Modern Authentication Test
+Executing: Office 365 Exchange Online Privileged Access Management Test
+Executing: Ensure the Common Attachment Types Filter is enabled
+Executing: Ensure the Client Rules Forwarding Block is enabled
+Executing: Ensure the Advanced Threat Protection Safe Links policy is enabled
+Executing: Ensure the Advanced Threat Protection SafeAttachments policy is enabled
+Executing: Ensure that LinkedIn contact synchronization is disabled
+Executing: Ensure that Facebook contact synchronization is disabled
+Executing: Ensure mail transport rules do not forward email to external domains
+Executing: Ensure mail transport rules do not whitelist specific domains
+Executing: Ensure basic authentication for Exchange Online is disabled
+Executing: Ensure that an anti-phishing policy has been created
+Executing: Office 365 Inactive Mailbox Test
+Executing: Office 365 Deleted Mailbox Test
+Executing: Exchange Online SPAM Test
+Executing: Office 365 Exchange Online Admin Auditing Test
+Executing: Office 365 Exchange Online External Access Admin Success and Failure Attempts
+Executing: Office 365 Exchange Online Admin Success and Failure Attempts
+Executing: Ensure automatic forwarding options are disabled
+Executing: Ensure that DKIM is enabled for all Exchange Online Domains
+Executing: Ensure that SPF records are published for all Exchange Domains
+Executing: Ensure DMARC Records for all Exchange Online domains are published
+Executing: Ensure notifications for internal users sending malware is Enabled
+Executing: Ensure MailTips are enabled for end users
+Executing: Ensure Exchange Online Spam Policies are set correctly
+No ErrorsFound
+Executed: EXCHANGE ONLINE
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Exchange Online
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Mailbox Sync TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Mailbox Hidden From Address List TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Exchange Online External Address Forwarding TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Exchange Online Litigation Hold TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Exchange Online Mailbox Auditing TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Exchange Online Modern Authentication TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Exchange Online Privileged Access Management TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the Common Attachment Types Filter is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the Client Rules Forwarding Block is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the Advanced Threat Protection Safe Links policy is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the Advanced Threat Protection SafeAttachments policy is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that LinkedIn contact synchronization is disabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that Facebook contact synchronization is disabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure mail transport rules do not forward email to external domainsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure mail transport rules do not whitelist specific domainsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure basic authentication for Exchange Online is disabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that an anti-phishing policy has been createdCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Inactive Mailbox TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Deleted Mailbox TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Exchange Online SPAM TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Exchange Online Admin Auditing TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Exchange Online External Access Admin Success and Failure AttemptsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Exchange Online Admin Success and Failure AttemptsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure automatic forwarding options are disabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that DKIM is enabled for all Exchange Online DomainsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that SPF records are published for all Exchange DomainsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure DMARC Records for all Exchange Online domains are publishedCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure notifications for internal users sending malware is EnabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure MailTips are enabled for end usersCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Exchange Online Spam Policies are set correctlyCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: ACCOUNTS AND AUTHENTICATION
+Executing: Ensure multifactor authentication is enabled for all users in all roles
+Executing: Office 365 Users Strong Password Requirements Test
+Executing: Ensure multifactor authentication is enabled for all users in administrative roles
+Executing: Ensure self-service password reset is enabled
+Executing: Ensure modern authentication for Exchange Online is enabled
+Executing: Ensure modern authentication for Teams Online is enabled
+Executing: Ensure that between two and four global admins are designated
+Executing: Ensure modern authentication for SharePoint applications is required
+Executing: Ensure that password hash sync is enabled for hybrid deployments
+Executing: Office 365 User Roles Test
+Executing: Ensure Administrative accounts are separate and cloud-only
+Executing: Enable Conditional Access policies to block legacy authentication
+Executing: Ensure that Office 365 Passwords Are Not Set to Expire
+No ErrorsFound
+Executed: ACCOUNTS AND AUTHENTICATION
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Accounts And Authentication
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure multifactor authentication is enabled for all users in all rolesCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Users Strong Password Requirements TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure multifactor authentication is enabled for all users in administrative rolesCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure self-service password reset is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure modern authentication for Exchange Online is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure modern authentication for Teams Online is enabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that between two and four global admins are designatedCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure modern authentication for SharePoint applications is requiredCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that password hash sync is enabled for hybrid deploymentsCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 User Roles TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Administrative accounts are separate and cloud-onlyCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Enable Conditional Access policies to block legacy authenticationCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that Office 365 Passwords Are Not Set to ExpireCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: CONFIGURATION
+Executing: Office 365 License Consumption Test
+Executing: Office 365 Domain Verification Test
+Executing: Office 365 Domain Services Test
+Executing: Office 365 Subscription Status Test
+Executing: Office 365 Subscription Status Test
+Executing: Office 365 Notification Emails Test
+Executing: Office 365 Organization Auditing Test
+Executing: Office 365 Dir Config Test
+Executing: Office 365 Dir Sync Features Test
+Executing: Office 365 Dir Sync Property Conflict Test
+Executing: Office 365 Dir Sync Property Conflict with User Principal Name Test
+Executing: Office 365 Dir Sync Property Conflict with ProxyAddress Test
+No ErrorsFound
+Executed: CONFIGURATION
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Configuration
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Domain Verification TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Domain Services TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Subscription Status TestCustomer-A-OFFICE Tenant.CSV
+File Not Found: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Subscription Status TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Subscription Status TestCustomer-A-OFFICE Tenant.CSV
+File Not Found: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Subscription Status TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Notification Emails TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Organization Auditing TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Dir Config TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Dir Sync Features TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Dir Sync Property Conflict TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Dir Sync Property Conflict with User Principal Name TestCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Office 365 Dir Sync Property Conflict with ProxyAddress TestCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: APPLICATION PERMISSIONS
+Executing: Ensure calendar details sharing with external users is disabled
+Executing: Ensure Safe Links for Office Applications is Enabled
+Executing: Ensure Safe Attachments for SharePoint-OneDrive-Microsoft Teams is Enabled
+Executing: Ensure user consent to apps accessing company data on their behalf is not allowed
+Executing: Ensure Office 365 SharePoint infected files are disallowed for download
+Errors when executing Code: No connection available. Use Connect-SPOService before running this CmdLet.
+However Continuing...
+Executed: APPLICATION PERMISSIONS
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Application Permissions
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure calendar details sharing with external users is disabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Safe Links for Office Applications is EnabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Safe Attachments for SharePoint-OneDrive-Microsoft Teams is EnabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure user consent to apps accessing company data on their behalf is not allowedCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Office 365 SharePoint infected files are disallowed for downloadCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: DATA MANAGEMENT
+Executing: Ensure that external users cannot share files folders and sites they do not own
+Executing: Ensure the customer lockbox feature is enabled
+No ErrorsFound
+Executed: DATA MANAGEMENT
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Data Management
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure that external users cannot share files folders and sites they do not ownCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the customer lockbox feature is enabledCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: AUDITING
+Executing: Ensure Microsoft 365 audit log search is Enabled
+Executing: Ensure Guest Users are reviewed at least biweekly
+Executing: Ensure mailbox auditing for all users is Enabled
+Executing: Ensure the spoofed domains report is review weekly
+Executing: Ensure the Application Usage report is reviewed at least weekly
+No ErrorsFound
+Executed: AUDITING
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Auditing
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Microsoft 365 audit log search is EnabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure Guest Users are reviewed at least biweeklyCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure mailbox auditing for all users is EnabledCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the spoofed domains report is review weeklyCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure the Application Usage report is reviewed at least weeklyCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: STORAGE
+Executing: Ensure external storage providers available in Outlook on the Web are restricted
+Executing: Ensure expiration time for external sharing links is set
+Executing: Block OneDrive for Business sync from unmanaged devices
+Executing: Ensure document sharing is being controlled by domains with whitelist or blacklist
+Errors when executing Code: No connection available. Use Connect-SPOService before running this CmdLet.
+However Continuing...
+Executed: STORAGE
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Storage
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure external storage providers available in Outlook on the Web are restrictedCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure expiration time for external sharing links is setCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Block OneDrive for Business sync from unmanaged devicesCustomer-A-OFFICE Tenant.CSV
+Checking File: C:\CloudDynamicFramework\Public\12345678\Users\NirmalTest\Data\Ensure document sharing is being controlled by domains with whitelist or blacklistCustomer-A-OFFICE Tenant.CSV
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+Processing CATEGORY: MOBILE DEVICE MANAGEMENT
+Errors when executing Code: Cannot bind argument to parameter 'Command' because it is an empty string.
+However Continuing...
+Executed: MOBILE DEVICE MANAGEMENT
+xxx===xxx===xxx=======xxxx================xxx========xxx===xxx===xxx
+ENDOFDATA FOR CAT: Mobile Device Management
+BASIC,View Module Executed...
+BASIC,Error Occured
+Error: Cannot bind argument to parameter 'Command' because it is an empty string.
+BASIC,[END: MODULE CODE: EXECUTING]
+COPY FILES IN TRP: 12345678
+Copying for USER: NirmalTest
+FINAL VIEW RESULT: SUCCESS [Office Assessment for a Tenant]
+VIEWEXECUTED,DONE,

@@ -1,0 +1,536 @@
+AVD FSLogix Containers Assessment#CredCode#$ScopedHostPools = "ALL"
+AVD FSLogix Containers Assessment#CredCode#$TargetHostsInPools = "COLLECT"
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#$ScopedHosts = "$NewLocNow\public\$TRPKey\Users\TEMP\ScopedHosts.CSV"
+AVD FSLogix Containers Assessment#CredCode#Remove-item $ScopedHosts -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#$STR = "Host Pool, Session Host,ResGroup"
+AVD FSLogix Containers Assessment#CredCode#Add-Content $ScopedHosts $STR
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#$STR = "Scoped Host Pools: $ScopedHostPools"
+AVD FSLogix Containers Assessment#CredCode#Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#$STR = "Target Hosts: $TargetHostsInPools"
+AVD FSLogix Containers Assessment#CredCode#Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#IF ($TargetHostsInPools -eq "" -or $TargetHostsInPools -eq $null)
+AVD FSLogix Containers Assessment#CredCode#{
+AVD FSLogix Containers Assessment#CredCode#	$STR = "Target Hosts NOT Defined..."
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#	$STR = "Aborting..."
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $FinalLogFile $STR	
+AVD FSLogix Containers Assessment#CredCode#}
+AVD FSLogix Containers Assessment#CredCode#else
+AVD FSLogix Containers Assessment#CredCode#{
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	IF ($TargetHostsInPools -eq "COLLECT")
+AVD FSLogix Containers Assessment#CredCode#	{		
+AVD FSLogix Containers Assessment#CredCode#		$R = Get-AzWvdHostPool | Select-Object *
+AVD FSLogix Containers Assessment#CredCode#		$AllPoolsNow = ""
+AVD FSLogix Containers Assessment#CredCode#		ForEach ($Item in $R)
+AVD FSLogix Containers Assessment#CredCode#		{
+AVD FSLogix Containers Assessment#CredCode#			$HostPool = $Item.Name
+AVD FSLogix Containers Assessment#CredCode#			$ThisLine = $Item.ApplicationGroupReference
+AVD FSLogix Containers Assessment#CredCode#			$R = $ThisLine
+AVD FSLogix Containers Assessment#CredCode#			$A, $B, $C, $D, $E, $F = $R.Split("/")
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$FinalResGroup = $E
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$DoOrNot = "No"
+AVD FSLogix Containers Assessment#CredCode#			IF ($ScopedHostPools -eq "ALL")
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$DoOrNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			else
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$SplittedPools = $ScopedHostPools.Split(",")
+AVD FSLogix Containers Assessment#CredCode#				foreach ($SplitPool in $SplittedPools)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					IF ($SplitPool.ToLower() -eq $HostPool.ToLower())
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$DoOrNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#						break
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			IF ($DoOrNot -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$FinalHostToAddNow = "NONE"
+AVD FSLogix Containers Assessment#CredCode#				$AllHosts = Get-AzWvdSessionHost -HostPoolName $HostPool -ResourceGroupName $FinalResGroup | Select-Object Name, Status
+AVD FSLogix Containers Assessment#CredCode#				foreach ($HostNow in $AllHosts)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					IF ($HostNow.Status -eq "Available")
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$A = $HostNow.Name
+AVD FSLogix Containers Assessment#CredCode#						$B, $C, $D = $A.Split("/")
+AVD FSLogix Containers Assessment#CredCode#						$FinalHostToAddNow, $U = $C.Split(".")
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$STR = $HostPool + "," + $FinalHostToAddNow + "," + $FinalResGroup
+AVD FSLogix Containers Assessment#CredCode#				Add-Content $ScopedHosts $STR
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#		}
+AVD FSLogix Containers Assessment#CredCode#	}
+AVD FSLogix Containers Assessment#CredCode#	else
+AVD FSLogix Containers Assessment#CredCode#	{
+AVD FSLogix Containers Assessment#CredCode#		$ThisSplit = $TargetHostsInPools.Split(":")
+AVD FSLogix Containers Assessment#CredCode#		foreach ($Item in $ThisSplit)
+AVD FSLogix Containers Assessment#CredCode#		{
+AVD FSLogix Containers Assessment#CredCode#			$HostPool, $FinalHostToAddNow, $FinalResGroup = $Item.Split(":")
+AVD FSLogix Containers Assessment#CredCode#			$STR = $HostPool + "," + $FinalHostToAddNow + "," + $FinalResGroup
+AVD FSLogix Containers Assessment#CredCode#			Add-Content $ScopedHosts $STR			
+AVD FSLogix Containers Assessment#CredCode#		}
+AVD FSLogix Containers Assessment#CredCode#	}
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$AllPoolsFile = "$NewLocNow\public\$TRPKey\Users\TEMP\FSLogixAllHostPools.CSV"
+AVD FSLogix Containers Assessment#CredCode#	Remove-Item $AllPoolsFile -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#	$STR = "Host Pool,"
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $AllPoolsFile $STR
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#	$TargetCSV = Import-Csv $ScopedHosts
+AVD FSLogix Containers Assessment#CredCode#	$AllPoolsNow = ""
+AVD FSLogix Containers Assessment#CredCode#	ForEach ($Item in $TargetCSV)
+AVD FSLogix Containers Assessment#CredCode#	{
+AVD FSLogix Containers Assessment#CredCode#		$HostPool = $Item.'Host Pool'
+AVD FSLogix Containers Assessment#CredCode#		$FinalResGroup = $Item.ResGroup
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#		$DoneOrNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#		IF ($DoOrNot -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#		{
+AVD FSLogix Containers Assessment#CredCode#			$STR = $HostPool + ","
+AVD FSLogix Containers Assessment#CredCode#			Add-Content $AllPoolsFile $STR
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$AllPoolsNow = $Item.Name + "," + $AllPoolsNow
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$STR = "Processing Host Pool: " + $HostPool
+AVD FSLogix Containers Assessment#CredCode#			Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#			$STR = "Resource Group: " + $FinalResGroup
+AVD FSLogix Containers Assessment#CredCode#			Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$FinalHostToTarget = $Item.'Session Host'						
+AVD FSLogix Containers Assessment#CredCode#			IF ($FinalHostToTarget -eq "NONE")
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			else
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$STR = "Host To Target: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#				Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$FSLogixResultFileProfC = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $HostPool + "_" + $FinalHostToTarget + "PROF_Container.CSV"
+AVD FSLogix Containers Assessment#CredCode#				Remove-Item $FSLogixResultFileProfC -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#				$FSLogixResultFileODFCC = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $HostPool + "_" + $FinalHostToTarget + "ODFC_Container.CSV"
+AVD FSLogix Containers Assessment#CredCode#				Remove-Item $FSLogixResultFileODFCC -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$STR = "Checking VM Status: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#				Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$AllGoodOrNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#				$Error.Clear()
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$AllVMs = Get-AzVM -Name $FinalHostToTarget -Status | Select-Object Name, PowerState
+AVD FSLogix Containers Assessment#CredCode#				IF ($Error.Count -eq 0)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					foreach ($VM in $AllVMs)
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						IF ($VM.Name.ToLower() -eq $FinalHostToTarget.ToLower())
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							IF ($VM.PowerState -eq "VM running")
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$EXEVMStatus = "VM Running"
+AVD FSLogix Containers Assessment#CredCode#								$STR = "VM is running"
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							else
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$EXEVMStatus = "VM NOT Running"
+AVD FSLogix Containers Assessment#CredCode#								$STR = "VM is NOT running"
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#								$AllGoodOrNot = "No"
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							break
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				else
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$STR = "Error Checking VM Status: " + $Error
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#					$AllGoodOrNot = "No"
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				IF ($AllGoodOrNot -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$AllJobsFile = "$NewLocNow\Public\$TRPKey\Users\TEMP\AllJobs.CSV"
+AVD FSLogix Containers Assessment#CredCode#					Remove-Item $AllJobsFile -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#					$STR = "JobID,HostName"
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $AllJobsFile $STR
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$STR = "Triggering Job for VM: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$FinalScriptPath = "$NewLocNow\Public\DPConfig\DPCode\VMScriptTest.ps1"
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$Error.Clear()
+AVD FSLogix Containers Assessment#CredCode#					$Status = Invoke-AzVMRunCommand -ResourceGroupName $FinalResGroup -Name $FinalHostToTarget -CommandId 'RunPowerShellScript' -ScriptPath "$FinalScriptPath" -AsJob
+AVD FSLogix Containers Assessment#CredCode#					$ThisJobID = $Status.ID.ToString() + "," + $ThisHostName
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $AllJobsFile $ThisJobID
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$STR = "Checking to see if Job Was completed for VM: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$TimeStart = Get-Date
+AVD FSLogix Containers Assessment#CredCode#					$TimeEnd = $timeStart.addminutes(8)
+AVD FSLogix Containers Assessment#CredCode#					Do
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$AllJobsFileCSV = Import-Csv $AllJobsFile
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$TimeNow = Get-Date
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$STR = "Status - 8 Minutes to run: Start: " + $TimeStart.ToString() + " Now: " + $TimeNow.ToString()
+AVD FSLogix Containers Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						if ($TimeNow -ge $TimeEnd)
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$ThisHostName = $JobIDNow.HostName
+AVD FSLogix Containers Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Containers Assessment#CredCode#								Stop-Job -Id $ThisJobID
+AVD FSLogix Containers Assessment#CredCode#								Remove-Job -Id $ThisJobID -Force
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#								$STR = "Job was removed: ID: " + $ThisJobID + " For Host: " + $ThisHostName
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#								$STR = "Error: Took Longer time to completed for VM: $FinalHostToTarget"
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#								$STR = "Aborting for VM: $FinalHostToTarget"
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#								$AllGoodOrNot = "No"
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						else
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						Start-Sleep -Seconds 10
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$DoneOrNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#						foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Containers Assessment#CredCode#							$FinalJobID = $ThisJobID
+AVD FSLogix Containers Assessment#CredCode#							$JobStatus = Get-Job -Id $FinalJobID
+AVD FSLogix Containers Assessment#CredCode#							IF ($JobStatus.State -eq "Running")
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$DoneOrNot = "No"
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						IF ($DoneOrNot -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$AllJobsFileCSV = Import-Csv $AllJobsFile
+AVD FSLogix Containers Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$ThisHostName = $JobIDNow.HostName
+AVD FSLogix Containers Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID -as [int]
+AVD FSLogix Containers Assessment#CredCode#								$JobStatus = Get-Job -Id $ThisJobID
+AVD FSLogix Containers Assessment#CredCode#								IF ($JobStatus.State -eq "Completed")
+AVD FSLogix Containers Assessment#CredCode#								{
+AVD FSLogix Containers Assessment#CredCode#									
+AVD FSLogix Containers Assessment#CredCode#								}
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Containers Assessment#CredCode#								Stop-Job -Id $ThisJobID
+AVD FSLogix Containers Assessment#CredCode#								Remove-Job -Id $ThisJobID -Force
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#							$STR = "Job Completed for VM: $FinalHostToTarget"
+AVD FSLogix Containers Assessment#CredCode#							Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#							Break
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					Until ($TimeNow -ge $TimeEnd)
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				IF ($AllGoodOrNot -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$STR = "VM Job Test was a Success for VM:" + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$STR = "Executing Script for Host: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$FinalScriptPath = "$NewLocNow\Public\DPConfig\DPCode\AVD\FSLogixConfigZERO.ps1"
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$Error.Clear()
+AVD FSLogix Containers Assessment#CredCode#					$Status = Invoke-AzVMRunCommand -ResourceGroupName $FinalResGroup -Name $FinalHostToTarget -CommandId 'RunPowerShellScript' -ScriptPath "$FinalScriptPath"
+AVD FSLogix Containers Assessment#CredCode#					IF ($Error.Count -eq 0)
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$STR = "Script Executed Successfully on Host: " + $FinalHostToTarget
+AVD FSLogix Containers Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$ResTMP = "$NewLocNow\Public\$TRPKey\Users\FSLogixResultsTMP.DPC"
+AVD FSLogix Containers Assessment#CredCode#						Remove-Item $ResTMP -ErrorAction SilentlyContinue
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$STR = $Status.value[0].Message
+AVD FSLogix Containers Assessment#CredCode#						Add-Content $ResTMP $STR
+AVD FSLogix Containers Assessment#CredCode#						foreach ($NewItem in Get-Content $ResTMP)
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$A, $B = $NewItem.Split(";")
+AVD FSLogix Containers Assessment#CredCode#							IF ($A -eq "PROFILE" -or $A -eq "PROF")
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FSLogixResultFileProfC $B
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							IF ($A -eq "ODFC")
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								Add-Content $FSLogixResultFileODFCC $B
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					else
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$STR = "Error Executing Script: " + $ThisHostName
+AVD FSLogix Containers Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#						$STR = "Error: " + $Error
+AVD FSLogix Containers Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#		}
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#	}
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$AVDDash = "$NewLocNow\public\DPConfig\DPCode\AVD\AVDDPDASH.CSV"
+AVD FSLogix Containers Assessment#CredCode#	$DashCSV = Import-Csv $AVDDash
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$AllPoolsNow = ""
+AVD FSLogix Containers Assessment#CredCode#	$PoolsCSV = Import-Csv $AllPoolsFile
+AVD FSLogix Containers Assessment#CredCode#	foreach ($Item in $PoolsCSV)
+AVD FSLogix Containers Assessment#CredCode#	{		
+AVD FSLogix Containers Assessment#CredCode#		$AllPoolsNow = $Item.'Host Pool' + "," + $AllPoolsNow
+AVD FSLogix Containers Assessment#CredCode#	}
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#	$STR = "Script Execution is Over"
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$STR = "Collecting Results"
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$STR = "FSLogix Setting/Test,Container Type," + $AllPoolsNow + "Test Details"	
+AVD FSLogix Containers Assessment#CredCode#	Add-Content $FinalResultFile $STR
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$FinalTemplateName = "$NewLocNow\public\DPConfig\DPCode\AVD\FSLogixContainersTests.CSV"
+AVD FSLogix Containers Assessment#CredCode#	$FSLogixTestsFile = $FinalTemplateName
+AVD FSLogix Containers Assessment#CredCode#	$PropCSV = Import-Csv $FSLogixTestsFile
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	$PoolsCSV = Import-Csv $AllPoolsFile
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	foreach ($Item in $PropCSV)
+AVD FSLogix Containers Assessment#CredCode#	{
+AVD FSLogix Containers Assessment#CredCode#		$ThisProp = $Item.FSLogixTest.Trim()
+AVD FSLogix Containers Assessment#CredCode#		$ThisReg = $Item.RegEntry
+AVD FSLogix Containers Assessment#CredCode#		$ContType = $Item.Type
+AVD FSLogix Containers Assessment#CredCode#		$DefValue = $Item.ExpValue
+AVD FSLogix Containers Assessment#CredCode#		$CheckEXPValue = $Item.ExpValue
+AVD FSLogix Containers Assessment#CredCode#		$FinalProp = '"' + $ThisProp + "`n[" + $ThisReg + "]" + '"'
+AVD FSLogix Containers Assessment#CredCode#		$ThisDesNow = $Item.Description
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#		IF ($ThisProp -eq "" -or $ThisProp -eq $null)
+AVD FSLogix Containers Assessment#CredCode#		{
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#		}
+AVD FSLogix Containers Assessment#CredCode#		else
+AVD FSLogix Containers Assessment#CredCode#		{
+AVD FSLogix Containers Assessment#CredCode#			$ThisFinalPropName = $ThisProp
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$AllDataNow = ""
+AVD FSLogix Containers Assessment#CredCode#			$AnyGap = "No"
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			ForEach ($PoolItem in $PoolsCSV)
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$ThisHostPoolR = $PoolItem.'Host Pool'
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$FinalHostToTarget = "NONE"
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$TargetCSV = Import-Csv $ScopedHosts				
+AVD FSLogix Containers Assessment#CredCode#				ForEach ($ItemInHostFile in $TargetCSV)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$TargetHostPool = $ItemInHostFile.'Host Pool'
+AVD FSLogix Containers Assessment#CredCode#					IF ($TargetHostPool -eq $ThisHostPoolR)
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$FinalHostToTarget = $ItemInHostFile.'Session Host'
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$FilesFoundOrNo = "No"
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$FSLogixResultFileProfCCSV = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $ThisHostPoolR + "_" + $FinalHostToTarget + "PROF_Container.CSV"
+AVD FSLogix Containers Assessment#CredCode#				IF (Test-Path $FSLogixResultFileODFCCCSV)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$FilesFoundOrNo = "Yes"					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				$FSLogixResultFileODFCCCSV = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $ThisHostPoolR + "_" + $FinalHostToTarget + "ODFC_Container.CSV"
+AVD FSLogix Containers Assessment#CredCode#				IF (Test-Path $FSLogixResultFileODFCCCSV)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$FilesFoundOrNo = "Yes"
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				IF ($FilesFoundOrNo -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					IF ($ContType -eq "ProfileContainer")
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$CSVTestFile = Get-Content $FSLogixResultFileProfCCSV
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					IF ($ContType -eq "OfficeContainer")
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$CSVTestFile = Get-Content $FSLogixResultFileODFCCCSV
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$FoundORNot = "No"
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$GotFinalPropNameNow = $DefValue
+AVD FSLogix Containers Assessment#CredCode#					foreach ($ItemCSV in $CSVTestFile)
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$A, $B = $ItemCSV.Split(":")
+AVD FSLogix Containers Assessment#CredCode#						$FinalA = $A.Trim()
+AVD FSLogix Containers Assessment#CredCode#						$FinalB = $B.Trim()
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#						$FinalValueSet = $FinalB
+AVD FSLogix Containers Assessment#CredCode#						IF ($ThisReg -eq $FinalA)
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$SomethingWrongOrNot = "No"							
+AVD FSLogix Containers Assessment#CredCode#							IF ($FinalB.ToLower() -eq $CheckEXPValue.ToLower())
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$DefPropClass = '<div class = "FSLogixAllGoodClass">' + $FinalValueSet + '</div>'
+AVD FSLogix Containers Assessment#CredCode#								$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Containers Assessment#CredCode#								$AnyGap = "No"
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							else
+AVD FSLogix Containers Assessment#CredCode#							{
+AVD FSLogix Containers Assessment#CredCode#								$FinalNowNew = "Value:" + $FinalB + " Expected: " + $DefValue
+AVD FSLogix Containers Assessment#CredCode#								$DefPropClass = '<div class = "RDPPropSomethingWrong">' + $FinalNowNew + '</div>'
+AVD FSLogix Containers Assessment#CredCode#								$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Containers Assessment#CredCode#								$AnyGap = "Yes"
+AVD FSLogix Containers Assessment#CredCode#							}
+AVD FSLogix Containers Assessment#CredCode#							$FoundORNot = "Yes"
+AVD FSLogix Containers Assessment#CredCode#							break
+AVD FSLogix Containers Assessment#CredCode#							
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					IF ($FoundORNot -eq "No")
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						$FinalNowNew = '<span class="FSLogixNotFoundClass">Not Found</span><br>' + "Expected: " + $DefValue
+AVD FSLogix Containers Assessment#CredCode#						$DefPropClass = '<div class = "RDPPropSomethingWrong">' + $FinalNowNew + '</div>'
+AVD FSLogix Containers Assessment#CredCode#						$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Containers Assessment#CredCode#						$AnyGap = "No"						
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					$AllDataNow = $GotFinalPropNameNow + "," + $AllDataNow
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				else
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$GotFinalPropNameNow = "Result File Not Found"
+AVD FSLogix Containers Assessment#CredCode#					$AllDataNow = $GotFinalPropNameNow + "," + $AllDataNow
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$ThisRem = "Remark: NA"
+AVD FSLogix Containers Assessment#CredCode#			$ThisImpact = "NA"
+AVD FSLogix Containers Assessment#CredCode#			$ThisRec = "NA"
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$ThisDivIFNoIssue = '<div class="VIEWAllItemsClass"><div style="margin-bottom: 0px;"><span style=""><i class="fa fa-check-circle" aria-hidden="true" style="font-size: 13px;color:  green;margin-right: 4px;"></i>Remark:</span><span style="font-weight: 400;">' + $ThisRem + '</span></div></div>'
+AVD FSLogix Containers Assessment#CredCode#			$ThisDivIFIssue = '<div class="VIEWAllItemsClass"><div style="margin-bottom: 10px;"><span style=""><i class="fa fa-check-circle" aria-hidden="true" style="font-size: 13px;color: red;margin-right: 4px;"></i>Remark:</span><span style="font-weight: 400;">' + $ThisRem + '</span></div><div style="margin-bottom: 10px;"><span style="color: #ee6969;"><i class="fa fa-exclamation-circle" aria-hidden="true" style="font-size: 13px;color: red;margin-right: 4px;"></i>Impact:</span><span style="font-weight: 400;">' + $ThisImpact + '</span></div><div><span style="color: #209f05;"><i class="fa fa-bullseye" aria-hidden="true" style="font-size: 13px;color: green;margin-right: 4px;"></i>Recommendation:</span><span style="font-weight: 400;">' + $ThisRec + ' </span></div></div>'
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			IF ($AnyGap -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#								
+AVD FSLogix Containers Assessment#CredCode#				$ThisTestSV = $ThisSev
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				foreach ($ItemText in $DashCSV)
+AVD FSLogix Containers Assessment#CredCode#				{
+AVD FSLogix Containers Assessment#CredCode#					$ThisPackInDash = $ItemText.DynamicPack
+AVD FSLogix Containers Assessment#CredCode#					
+AVD FSLogix Containers Assessment#CredCode#					IF ($ThisPackInDash -eq $ThisProp)
+AVD FSLogix Containers Assessment#CredCode#					{
+AVD FSLogix Containers Assessment#CredCode#						IF ($AnyGap -eq "No")
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$ThisRem = $ItemText.PassedRemark
+AVD FSLogix Containers Assessment#CredCode#							$ThisImpact = "NA"
+AVD FSLogix Containers Assessment#CredCode#							$ThisRec = "NA"
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						IF ($AnyGap -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#						{
+AVD FSLogix Containers Assessment#CredCode#							$ThisRem = $ItemText.Issue
+AVD FSLogix Containers Assessment#CredCode#							$ThisImpact = $ItemText.Impact
+AVD FSLogix Containers Assessment#CredCode#							$ThisRec = $ItemText.Rec
+AVD FSLogix Containers Assessment#CredCode#						}
+AVD FSLogix Containers Assessment#CredCode#						break
+AVD FSLogix Containers Assessment#CredCode#					}
+AVD FSLogix Containers Assessment#CredCode#				}
+AVD FSLogix Containers Assessment#CredCode#				
+AVD FSLogix Containers Assessment#CredCode#				$ThisDivIFNoIssue = '<div class="VIEWAllItemsClass"><div style="margin-bottom: 0px;"><span style=""><i class="fa fa-check-circle" aria-hidden="true" style="font-size: 13px;color:  green;margin-right: 4px;"></i>Remark:</span><span style="font-weight: 400;">' + $ThisRem + '</span></div></div>'
+AVD FSLogix Containers Assessment#CredCode#				$ThisDivIFIssue = '<div class="VIEWAllItemsClass"><div style="margin-bottom: 10px;"><span style=""><i class="fa fa-check-circle" aria-hidden="true" style="font-size: 13px;color: red;margin-right: 4px;"></i>Remark:</span><span style="font-weight: 400;">' + $ThisRem + '</span></div><div style="margin-bottom: 10px;"><span style="color: #ee6969;"><i class="fa fa-exclamation-circle" aria-hidden="true" style="font-size: 13px;color: red;margin-right: 4px;"></i>Impact:</span><span style="font-weight: 400;">' + $ThisImpact + '</span></div><div><span style="color: #209f05;"><i class="fa fa-bullseye" aria-hidden="true" style="font-size: 13px;color: green;margin-right: 4px;"></i>Recommendation:</span><span style="font-weight: 400;">' + $ThisRec + ' </span></div></div>'
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			IF ($AnyGap -eq "Yes")
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$FinalDetDivToAdd = $ThisDivIFIssue
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			else
+AVD FSLogix Containers Assessment#CredCode#			{
+AVD FSLogix Containers Assessment#CredCode#				$FinalDetDivToAdd = $ThisDivIFNoIssue
+AVD FSLogix Containers Assessment#CredCode#			}
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$ContTypeDiv = '<div class="ConsInconsClassForAVD">' + $ContType + '</div>'			
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			$InsertRegEnt = '<br><p class="FSLogixRegEntNameClass">' + $ThisReg + '</p>'
+AVD FSLogix Containers Assessment#CredCode#			$PropClassHere = '<div class = "RDPPropPropNameClass">' + $ThisProp + $InsertRegEnt + '</div><div class = "RDPPropDescriptionSet">' + $ThisDesNow + '</div>'
+AVD FSLogix Containers Assessment#CredCode#			$STR = $PropClassHere + "," + $ContTypeDiv + "," + $AllDataNow + $FinalDetDivToAdd			
+AVD FSLogix Containers Assessment#CredCode#			Add-Content $FinalResultFile $STR
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#			
+AVD FSLogix Containers Assessment#CredCode#		}
+AVD FSLogix Containers Assessment#CredCode#		
+AVD FSLogix Containers Assessment#CredCode#	}
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#	
+AVD FSLogix Containers Assessment#CredCode#}
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#
+AVD FSLogix Containers Assessment#CredCode#

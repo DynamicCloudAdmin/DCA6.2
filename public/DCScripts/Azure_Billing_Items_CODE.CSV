@@ -1,0 +1,17 @@
+Azure Billing Items#CredCode## Get all Azure subscriptions
+Azure Billing Items#CredCode#$subscriptions = Get-AzSubscription
+Azure Billing Items#CredCode## Create an empty array to store billing items
+Azure Billing Items#CredCode#$billingItems = @()
+Azure Billing Items#CredCode## Loop through each subscription
+Azure Billing Items#CredCode#foreach ($subscription in $subscriptions)
+Azure Billing Items#CredCode#{
+Azure Billing Items#CredCode#    # Select the subscription
+Azure Billing Items#CredCode#    Select-AzSubscription -SubscriptionId $subscription.Id
+Azure Billing Items#CredCode#    # Get all billing items for the subscription
+Azure Billing Items#CredCode#    $items = Get-AzBillingInvoice -Detailed
+Azure Billing Items#CredCode#    # Add the billing items to the array
+Azure Billing Items#CredCode#    $billingItems += $items
+Azure Billing Items#CredCode#}
+Azure Billing Items#CredCode## Export the billing items to a CSV file
+Azure Billing Items#CredCode#$billingItems | Export-Csv -Path $FinalResultFile -NoTypeInformation
+Azure Billing Items#CredCode#

@@ -1,0 +1,25 @@
+TestCat,TestName,Severity
+Users,Office 365 License Consumption Test,Executing
+Users,Office 365 License Consumption Test,High
+Configuration,Office 365 Domain Verification Test,Executing
+Configuration,Office 365 Domain Verification Test,Passed
+Configuration,Office 365 Domain Services Test,Executing
+Configuration,Office 365 Domain Services Test,Passed
+Configuration,Office 365 Subscription Status Test,Executing
+Configuration,Office 365 Subscription Status Test,Passed
+Configuration,Office 365 Subscription Status Test,Executing
+Configuration,Office 365 Subscription Status Test,Passed
+Configuration,Office 365 Notification Emails Test,Executing
+Configuration,Office 365 Notification Emails Test,Passed
+Configuration,Office 365 Organization Auditing Test,Executing
+Configuration,Office 365 Organization Auditing Test,Passed
+Configuration,Office 365 Dir Config Test,Executing
+Configuration,Office 365 Dir Config Test,High
+Configuration,Office 365 Dir Sync Features Test,Executing
+Configuration,Office 365 Dir Sync Features Test,Low
+Configuration,Office 365 Dir Sync Property Conflict Test,Executing
+Configuration,Office 365 Dir Sync Property Conflict Test,Passed
+Configuration,Office 365 Dir Sync Property Conflict with User Principal Name Test,Executing
+Configuration,Office 365 Dir Sync Property Conflict with User Principal Name Test,Passed
+Configuration,Office 365 Dir Sync Property Conflict with ProxyAddress Test,Executing
+Configuration,Office 365 Dir Sync Property Conflict with ProxyAddress Test,Passed

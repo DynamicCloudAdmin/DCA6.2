@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>Az.ImageBuilder</id>
+    <version>0.2.0</version>
+    <authors>Microsoft Corporation</authors>
+    <owners>Microsoft Corporation</owners>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+    <licenseUrl>https://aka.ms/azps-license</licenseUrl>
+    <projectUrl>https://github.com/Azure/azure-powershell</projectUrl>
+    <description>Microsoft Azure PowerShell: ImageBuilder cmdlets</description>
+    <releaseNotes>* Added support for runAsSystem parameter in `New-AzImageBuilderCustomizerObject` [#13163]
+        * Added support to create template basing on imported json in `New-AzImageBuilderTemplate`. [#12634]</releaseNotes>
+    <copyright>Microsoft Corporation. All rights reserved.</copyright>
+    <tags>Azure ResourceManager ARM PSModule ImageBuilder PSIncludes_Function PSFunction_Get-AzImageBuilderRunOutput PSFunction_Get-AzImageBuilderTemplate PSFunction_New-AzImageBuilderCustomizerObject PSFunction_New-AzImageBuilderDistributorObject PSFunction_New-AzImageBuilderSourceObject PSFunction_New-AzImageBuilderTemplate PSFunction_Remove-AzImageBuilderTemplate PSFunction_Start-AzImageBuilderTemplate PSFunction_Stop-AzImageBuilderTemplate PSCommand_Get-AzImageBuilderRunOutput PSCommand_Get-AzImageBuilderTemplate PSCommand_New-AzImageBuilderCustomizerObject PSCommand_New-AzImageBuilderDistributorObject PSCommand_New-AzImageBuilderSourceObject PSCommand_New-AzImageBuilderTemplate PSCommand_Remove-AzImageBuilderTemplate PSCommand_Start-AzImageBuilderTemplate PSCommand_Stop-AzImageBuilderTemplate</tags>
+    <dependencies>
+      <dependency id="Az.Accounts" version="2.2.7" />
+    </dependencies>
+  </metadata>
+</package>

@@ -1,0 +1,1072 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <ViewDefinitions>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineInstanceView</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.VirtualMachineBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSComputeLongRunningOperation</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>OperationId</Label>
+                <PropertyName>OperationId</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StartTime</Label>
+                <PropertyName>StartTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>EndTime</Label>
+                <PropertyName>EndTime</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Error</Label>
+                <PropertyName>Error</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageBase</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageBase</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImagePublisher</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImagePublisher</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>PublisherName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageOffer</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageOffer</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Offer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageSku</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageSku</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Skus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Offer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImage</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+          <TableColumnHeader/>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <PropertyName>Version</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>FilterExpression</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Skus</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Offer</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>PublisherName</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Location</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>Id</PropertyName>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageDetail</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineImageDetail</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublisherName</Label>
+                <PropertyName>PublisherName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Offer</Label>
+                <PropertyName>Offer</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Skus</Label>
+                <PropertyName>Skus</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FilterExpression</Label>
+                <PropertyName>FilterExpression</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HyperVGeneration</Label>
+                <PropertyName>HyperVGeneration</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OSDiskImage</Label>
+                <PropertyName>OSDiskImageText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PurchasePlan</Label>
+                <PropertyName>PurchasePlanText</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DataDiskImages</Label>
+                <PropertyName>DataDiskImagesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImage</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImage</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublisherName</Label>
+                <PropertyName>PublisherName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FilterExpression</Label>
+                <PropertyName>FilterExpression</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImageDetails</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineExtensionImageDetails</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>PublisherName</Label>
+                <PropertyName>PublisherName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Type</Label>
+                <PropertyName>Type</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>FilterExpression</Label>
+                <PropertyName>FilterExpression</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>HandlerSchema</Label>
+                <PropertyName>HandlerSchema</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OperatingSystem</Label>
+                <PropertyName>OperatingSystem</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ComputeRole</Label>
+                <PropertyName>ComputeRole</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SupportsMultipleExtensions</Label>
+                <PropertyName>SupportsMultipleExtensions</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VMScaleSetEnabled</Label>
+                <PropertyName>VMScaleSetEnabled</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Management.Compute.Models.DataDisk</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Management.Compute.Models.DataDisk</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DiskSizeGB</Label>
+                <PropertyName>DiskSizeGB</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Lun</Label>
+                <PropertyName>Lun</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Caching</Label>
+                <PropertyName>Caching</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>CreateOption</Label>
+                <PropertyName>CreateOption</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>SourceImage</Label>
+                <PropertyName>SourceImage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VirtualHardDisk</Label>
+                <ScriptBlock>
+                  if ($_.VirtualHardDisk -ne $null)
+                  {
+                     $_.VirtualHardDisk.Uri;
+                  }
+                  else
+                  {
+                     $_.VirtualHardDisk;
+                  }
+                </ScriptBlock>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Name</Label>
+                <PropertyName>Name</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Publisher</Label>
+                <PropertyName>Publisher</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ExtensionType</Label>
+                <PropertyName>ExtensionType</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>TypeHandlerVersion</Label>
+                <PropertyName>TypeHandlerVersion</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProvisioningState</Label>
+                <PropertyName>ProvisioningState</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Location</Label>
+                <PropertyName>Location</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Id</Label>
+                <PropertyName>Id</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ModulesUrl</Label>
+                <PropertyName>ModulesUrl</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ConfigurationFunction</Label>
+                <PropertyName>ConfigurationFunction</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Properties</Label>
+                <PropertyName>Properties</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Statuses</Label>
+                <PropertyName>StatusesText</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionStatusContext</Name>
+      <OutOfBand />
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Extension.DSC.VirtualMachineDscExtensionStatusContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>ResourceGroupName</Label>
+                <PropertyName>ResourceGroupName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>VmName</Label>
+                <PropertyName>VmName</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Version</Label>
+                <PropertyName>Version</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Status</Label>
+                <PropertyName>Status</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>StatusCode</Label>
+                <PropertyName>StatusCode</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>Timestamp</Label>
+                <ScriptBlock>
+                  $_.Timestamp.ToString("G")
+                </ScriptBlock>
+              </ListItem>
+              <ListItem>
+                <Label>StatusMessage</Label>
+                <PropertyName>StatusMessage</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DscConfigurationLog</Label>
+                <PropertyName>DscConfigurationLog</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.AzureDiskEncryptionStatusContext</Name>
+      <OutOfBand />
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.AzureDiskEncryptionStatusContext</TypeName>
+      </ViewSelectedBy>
+      <ListControl>
+        <ListEntries>
+          <ListEntry>
+            <ListItems>
+              <ListItem>
+                <Label>OsVolumeEncrypted</Label>
+                <PropertyName>OsVolumeEncrypted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>DataVolumesEncrypted</Label>
+                <PropertyName>DataVolumesEncrypted</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>OsVolumeEncryptionSettings</Label>
+                <PropertyName>OsVolumeEncryptionSettings</PropertyName>
+              </ListItem>
+              <ListItem>
+                <Label>ProgressMessage</Label>
+                <PropertyName>ProgressMessage</PropertyName>
+              </ListItem>
+            </ListItems>
+          </ListEntry>
+        </ListEntries>
+      </ListControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VmSize</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OsType</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NIC</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ProvisioningState</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Zone</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.ResourceGroupName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.HardwareProfile.VmSize</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.StorageProfile.OsDisk.OsType</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $nics = $_.NetworkProfile.NetworkInterfaces;
+                  foreach ($nic in $nics)
+                  {
+                    $nic.Id.Substring($nic.Id.LastIndexof('/') + 1);
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ProvisioningState</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Zones</ScriptBlock>
+              </TableColumnItem>
+              </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineListStatus</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVirtualMachineListStatus</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Name</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Location</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VmSize</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OsType</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>NIC</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Provisioning</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Zone</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>PowerState</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>MaintenanceAllowed</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.ResourceGroupName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Name</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Location</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.HardwareProfile.VmSize</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.StorageProfile.OsDisk.OsType</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>
+                  $nics = $_.NetworkProfile.NetworkInterfaces;
+                  foreach ($nic in $nics)
+                  {
+                    $nic.Id.Substring($nic.Id.LastIndexof('/') + 1);
+                  }
+                </ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.ProvisioningState</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Zones</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.PowerState</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.MaintenanceRedeployStatus.IsCustomerInitiatedMaintenanceAllowed</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVmssVMDiskEncryptionStatusContextList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVmssVMDiskEncryptionStatusContextList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>InstanceID</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>OsDisk</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>DataDisk</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>ExtensionStatus</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.InstanceId</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.OsVolumeEncrypted</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.DataVolumesEncrypted</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.Extension.Statuses[0].DisplayStatus</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVmssVMDiskEncryptionStatusContext</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVmssVMDiskEncryptionStatusContext</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.VirtualMachineBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVmssDiskEncryptionStatusContextList</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVmssDiskEncryptionStatusContextList</TypeName>
+      </ViewSelectedBy>
+      <TableControl>
+        <TableHeaders>
+          <TableColumnHeader>
+            <Label>ResourceGroupName</Label>
+            <Alignment>Left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VMScaleSetName</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>VolumeType</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>EncryptionEnabled</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Summary</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Count</Label>
+            <Alignment>Right</Alignment>
+          </TableColumnHeader>
+        </TableHeaders>
+        <TableRowEntries>
+          <TableRowEntry>
+            <TableColumnItems>
+              <TableColumnItem>
+                <ScriptBlock>$_.ResourceGroupName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.VMScaleSetName</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EncryptionSettings.VolumeType</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EncryptionEnabled</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EncryptionSummary[0].Code</ScriptBlock>
+              </TableColumnItem>
+              <TableColumnItem>
+                <ScriptBlock>$_.EncryptionSummary[0].Count</ScriptBlock>
+              </TableColumnItem>
+            </TableColumnItems>
+          </TableRowEntry>
+        </TableRowEntries>
+      </TableControl>
+    </View>
+    <View>
+      <Name>Microsoft.Azure.Commands.Compute.Models.PSVmssDiskEncryptionStatusContext</Name>
+      <ViewSelectedBy>
+        <TypeName>Microsoft.Azure.Commands.Compute.Models.PSVmssDiskEncryptionStatusContext</TypeName>
+      </ViewSelectedBy>
+      <CustomControl>
+        <CustomEntries>
+          <CustomEntry>
+            <CustomItem>
+              <ExpressionBinding>
+                <ScriptBlock>[Microsoft.Azure.Commands.Compute.VirtualMachineBaseCmdlet]::FormatObject($_)</ScriptBlock>
+              </ExpressionBinding>
+            </CustomItem>
+          </CustomEntry>
+        </CustomEntries>
+      </CustomControl>
+    </View>
+  </ViewDefinitions>
+</Configuration>
+
+<!-- SIG # Begin signature block -->
+<!-- MIIjiQYJKoZIhvcNAQcCoIIjejCCI3YCAQExDzANBglghkgBZQMEAgEFADB5Bgor -->
+<!-- BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG -->
+<!-- KX7zUQIBAAIBAAIBAAIBAAIBADAxMA0GCWCGSAFlAwQCAQUABCCPvhVxtd6EHkgK -->
+<!-- t8xNbgk/KWbaQZ+OLXDf/AIaxqEXZaCCDYUwggYDMIID66ADAgECAhMzAAABiK9S -->
+<!-- 1rmSbej5AAAAAAGIMA0GCSqGSIb3DQEBCwUAMH4xCzAJBgNVBAYTAlVTMRMwEQYD -->
+<!-- VQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVNaWNy -->
+<!-- b3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01pY3Jvc29mdCBDb2RlIFNpZ25p -->
+<!-- bmcgUENBIDIwMTEwHhcNMjAwMzA0MTgzOTQ4WhcNMjEwMzAzMTgzOTQ4WjB0MQsw -->
+<!-- CQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9u -->
+<!-- ZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMR4wHAYDVQQDExVNaWNy -->
+<!-- b3NvZnQgQ29ycG9yYXRpb24wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIB -->
+<!-- AQCSCNryE+Cewy2m4t/a74wZ7C9YTwv1PyC4BvM/kSWPNs8n0RTe+FvYfU+E9uf0 -->
+<!-- t7nYlAzHjK+plif2BhD+NgdhIUQ8sVwWO39tjvQRHjP2//vSvIfmmkRoML1Ihnjs -->
+<!-- 9kQiZQzYRDYYRp9xSQYmRwQjk5hl8/U7RgOiQDitVHaU7BT1MI92lfZRuIIDDYBd -->
+<!-- vXtbclYJMVOwqZtv0O9zQCret6R+fRSGaDNfEEpcILL+D7RV3M4uaJE4Ta6KAOdv -->
+<!-- V+MVaJp1YXFTZPKtpjHO6d9pHQPZiG7NdC6QbnRGmsa48uNQrb6AfmLKDI1Lp31W -->
+<!-- MogTaX5tZf+CZT9PSuvjOCLNAgMBAAGjggGCMIIBfjAfBgNVHSUEGDAWBgorBgEE -->
+<!-- AYI3TAgBBggrBgEFBQcDAzAdBgNVHQ4EFgQUj9RJL9zNrPcL10RZdMQIXZN7MG8w -->
+<!-- VAYDVR0RBE0wS6RJMEcxLTArBgNVBAsTJE1pY3Jvc29mdCBJcmVsYW5kIE9wZXJh -->
+<!-- dGlvbnMgTGltaXRlZDEWMBQGA1UEBRMNMjMwMDEyKzQ1ODM4NjAfBgNVHSMEGDAW -->
+<!-- gBRIbmTlUAXTgqoXNzcitW2oynUClTBUBgNVHR8ETTBLMEmgR6BFhkNodHRwOi8v -->
+<!-- d3d3Lm1pY3Jvc29mdC5jb20vcGtpb3BzL2NybC9NaWNDb2RTaWdQQ0EyMDExXzIw -->
+<!-- MTEtMDctMDguY3JsMGEGCCsGAQUFBwEBBFUwUzBRBggrBgEFBQcwAoZFaHR0cDov -->
+<!-- L3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9jZXJ0cy9NaWNDb2RTaWdQQ0EyMDEx -->
+<!-- XzIwMTEtMDctMDguY3J0MAwGA1UdEwEB/wQCMAAwDQYJKoZIhvcNAQELBQADggIB -->
+<!-- ACnXo8hjp7FeT+H6iQlV3CcGnkSbFvIpKYafgzYCFo3UHY1VHYJVb5jHEO8oG26Q -->
+<!-- qBELmak6MTI+ra3WKMTGhE1sEIlowTcp4IAs8a5wpCh6Vf4Z/bAtIppP3p3gXk2X -->
+<!-- 8UXTc+WxjQYsDkFiSzo/OBa5hkdW1g4EpO43l9mjToBdqEPtIXsZ7Hi1/6y4gK0P -->
+<!-- mMiwG8LMpSn0n/oSHGjrUNBgHJPxgs63Slf58QGBznuXiRaXmfTUDdrvhRocdxIM -->
+<!-- i8nXQwWACMiQzJSRzBP5S2wUq7nMAqjaTbeXhJqD2SFVHdUYlKruvtPSwbnqSRWT -->
+<!-- GI8s4FEXt+TL3w5JnwVZmZkUFoioQDMMjFyaKurdJ6pnzbr1h6QW0R97fWc8xEIz -->
+<!-- LIOiU2rjwWAtlQqFO8KNiykjYGyEf5LyAJKAO+rJd9fsYR+VBauIEQoYmjnUbTXM -->
+<!-- SY2Lf5KMluWlDOGVh8q6XjmBccpaT+8tCfxpaVYPi1ncnwTwaPQvVq8RjWDRB7Pa -->
+<!-- 8ruHgj2HJFi69+hcq7mWx5nTUtzzFa7RSZfE5a1a5AuBmGNRr7f8cNfa01+tiWjV -->
+<!-- Kk1a+gJUBSP0sIxecFbVSXTZ7bqeal45XSDIisZBkWb+83TbXdTGMDSUFKTAdtC+ -->
+<!-- r35GfsN8QVy59Hb5ZYzAXczhgRmk7NyE6jD0Ym5TKiW5MIIHejCCBWKgAwIBAgIK -->
+<!-- YQ6Q0gAAAAAAAzANBgkqhkiG9w0BAQsFADCBiDELMAkGA1UEBhMCVVMxEzARBgNV -->
+<!-- BAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jv -->
+<!-- c29mdCBDb3Jwb3JhdGlvbjEyMDAGA1UEAxMpTWljcm9zb2Z0IFJvb3QgQ2VydGlm -->
+<!-- aWNhdGUgQXV0aG9yaXR5IDIwMTEwHhcNMTEwNzA4MjA1OTA5WhcNMjYwNzA4MjEw -->
+<!-- OTA5WjB+MQswCQYDVQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UE -->
+<!-- BxMHUmVkbW9uZDEeMBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSgwJgYD -->
+<!-- VQQDEx9NaWNyb3NvZnQgQ29kZSBTaWduaW5nIFBDQSAyMDExMIICIjANBgkqhkiG -->
+<!-- 9w0BAQEFAAOCAg8AMIICCgKCAgEAq/D6chAcLq3YbqqCEE00uvK2WCGfQhsqa+la -->
+<!-- UKq4BjgaBEm6f8MMHt03a8YS2AvwOMKZBrDIOdUBFDFC04kNeWSHfpRgJGyvnkmc -->
+<!-- 6Whe0t+bU7IKLMOv2akrrnoJr9eWWcpgGgXpZnboMlImEi/nqwhQz7NEt13YxC4D -->
+<!-- dato88tt8zpcoRb0RrrgOGSsbmQ1eKagYw8t00CT+OPeBw3VXHmlSSnnDb6gE3e+ -->
+<!-- lD3v++MrWhAfTVYoonpy4BI6t0le2O3tQ5GD2Xuye4Yb2T6xjF3oiU+EGvKhL1nk -->
+<!-- kDstrjNYxbc+/jLTswM9sbKvkjh+0p2ALPVOVpEhNSXDOW5kf1O6nA+tGSOEy/S6 -->
+<!-- A4aN91/w0FK/jJSHvMAhdCVfGCi2zCcoOCWYOUo2z3yxkq4cI6epZuxhH2rhKEmd -->
+<!-- X4jiJV3TIUs+UsS1Vz8kA/DRelsv1SPjcF0PUUZ3s/gA4bysAoJf28AVs70b1FVL -->
+<!-- 5zmhD+kjSbwYuER8ReTBw3J64HLnJN+/RpnF78IcV9uDjexNSTCnq47f7Fufr/zd -->
+<!-- sGbiwZeBe+3W7UvnSSmnEyimp31ngOaKYnhfsi+E11ecXL93KCjx7W3DKI8sj0A3 -->
+<!-- T8HhhUSJxAlMxdSlQy90lfdu+HggWCwTXWCVmj5PM4TasIgX3p5O9JawvEagbJjS -->
+<!-- 4NaIjAsCAwEAAaOCAe0wggHpMBAGCSsGAQQBgjcVAQQDAgEAMB0GA1UdDgQWBBRI -->
+<!-- bmTlUAXTgqoXNzcitW2oynUClTAZBgkrBgEEAYI3FAIEDB4KAFMAdQBiAEMAQTAL -->
+<!-- BgNVHQ8EBAMCAYYwDwYDVR0TAQH/BAUwAwEB/zAfBgNVHSMEGDAWgBRyLToCMZBD -->
+<!-- uRQFTuHqp8cx0SOJNDBaBgNVHR8EUzBRME+gTaBLhklodHRwOi8vY3JsLm1pY3Jv -->
+<!-- c29mdC5jb20vcGtpL2NybC9wcm9kdWN0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFf -->
+<!-- MDNfMjIuY3JsMF4GCCsGAQUFBwEBBFIwUDBOBggrBgEFBQcwAoZCaHR0cDovL3d3 -->
+<!-- dy5taWNyb3NvZnQuY29tL3BraS9jZXJ0cy9NaWNSb29DZXJBdXQyMDExXzIwMTFf -->
+<!-- MDNfMjIuY3J0MIGfBgNVHSAEgZcwgZQwgZEGCSsGAQQBgjcuAzCBgzA/BggrBgEF -->
+<!-- BQcCARYzaHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraW9wcy9kb2NzL3ByaW1h -->
+<!-- cnljcHMuaHRtMEAGCCsGAQUFBwICMDQeMiAdAEwAZQBnAGEAbABfAHAAbwBsAGkA -->
+<!-- YwB5AF8AcwB0AGEAdABlAG0AZQBuAHQALiAdMA0GCSqGSIb3DQEBCwUAA4ICAQBn -->
+<!-- 8oalmOBUeRou09h0ZyKbC5YR4WOSmUKWfdJ5DJDBZV8uLD74w3LRbYP+vj/oCso7 -->
+<!-- v0epo/Np22O/IjWll11lhJB9i0ZQVdgMknzSGksc8zxCi1LQsP1r4z4HLimb5j0b -->
+<!-- pdS1HXeUOeLpZMlEPXh6I/MTfaaQdION9MsmAkYqwooQu6SpBQyb7Wj6aC6VoCo/ -->
+<!-- KmtYSWMfCWluWpiW5IP0wI/zRive/DvQvTXvbiWu5a8n7dDd8w6vmSiXmE0OPQvy -->
+<!-- CInWH8MyGOLwxS3OW560STkKxgrCxq2u5bLZ2xWIUUVYODJxJxp/sfQn+N4sOiBp -->
+<!-- mLJZiWhub6e3dMNABQamASooPoI/E01mC8CzTfXhj38cbxV9Rad25UAqZaPDXVJi -->
+<!-- hsMdYzaXht/a8/jyFqGaJ+HNpZfQ7l1jQeNbB5yHPgZ3BtEGsXUfFL5hYbXw3MYb -->
+<!-- BL7fQccOKO7eZS/sl/ahXJbYANahRr1Z85elCUtIEJmAH9AAKcWxm6U/RXceNcbS -->
+<!-- oqKfenoi+kiVH6v7RyOA9Z74v2u3S5fi63V4GuzqN5l5GEv/1rMjaHXmr/r8i+sL -->
+<!-- gOppO6/8MO0ETI7f33VtY5E90Z1WTk+/gFcioXgRMiF670EKsT/7qMykXcGhiJtX -->
+<!-- cVZOSEXAQsmbdlsKgEhr/Xmfwb1tbWrJUnMTDXpQzTGCFVowghVWAgEBMIGVMH4x -->
+<!-- CzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRt -->
+<!-- b25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xKDAmBgNVBAMTH01p -->
+<!-- Y3Jvc29mdCBDb2RlIFNpZ25pbmcgUENBIDIwMTECEzMAAAGIr1LWuZJt6PkAAAAA -->
+<!-- AYgwDQYJYIZIAWUDBAIBBQCgga4wGQYJKoZIhvcNAQkDMQwGCisGAQQBgjcCAQQw -->
+<!-- HAYKKwYBBAGCNwIBCzEOMAwGCisGAQQBgjcCARUwLwYJKoZIhvcNAQkEMSIEIBgN -->
+<!-- vecTucbKXxveBpvYTIEHuT+2+kAYIzRwDPtKLWNyMEIGCisGAQQBgjcCAQwxNDAy -->
+<!-- oBSAEgBNAGkAYwByAG8AcwBvAGYAdKEagBhodHRwOi8vd3d3Lm1pY3Jvc29mdC5j -->
+<!-- b20wDQYJKoZIhvcNAQEBBQAEggEAaA/JzN39eYW5VjsiOOUhVscLcPhh5lA5FgrC -->
+<!-- Cx/yPQsn0fMhxuSjl+MULSW8znFRSW5hGZQh8QzmOv92/xv7QDfUFzq9++gdHCua -->
+<!-- Q/vBNx6Eh3TbKHdqlgXnrKnODRlv7r5MI/uxrfDeBAecTpWPqKWA3ylJQrwmqZ3i -->
+<!-- 8suV3kmq2PCiI9qGprJOP/60Hv4NOrirGdJK+ZduQwtCo72KoDeWhG7YCAevyCAH -->
+<!-- j4dMo3WAizWSK8aOUNXgFACkNNBdYPGWHYnpoBxhAKkrYZdmaKf4TvTVQ/rsqC0w -->
+<!-- 386cIL1UOQJh3dhWcwu0YStZB7q+nwxBW9p2sr7CB7sAkQBzWKGCEuQwghLgBgor -->
+<!-- BgEEAYI3AwMBMYIS0DCCEswGCSqGSIb3DQEHAqCCEr0wghK5AgEDMQ8wDQYJYIZI -->
+<!-- AWUDBAIBBQAwggFQBgsqhkiG9w0BCRABBKCCAT8EggE7MIIBNwIBAQYKKwYBBAGE -->
+<!-- WQoDATAxMA0GCWCGSAFlAwQCAQUABCBzJC7CdiQrzq7x7AmqQD5yXRFskjD4KFnp -->
+<!-- RULmUvUJBwIGXvCTji4wGBIyMDIwMDcwOTEwMTEzNi4zOFowBIACAfSggdCkgc0w -->
+<!-- gcoxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdS -->
+<!-- ZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJTAjBgNVBAsT -->
+<!-- HE1pY3Jvc29mdCBBbWVyaWNhIE9wZXJhdGlvbnMxJjAkBgNVBAsTHVRoYWxlcyBU -->
+<!-- U1MgRVNOOkQ2QkQtRTNFNy0xNjg1MSUwIwYDVQQDExxNaWNyb3NvZnQgVGltZS1T -->
+<!-- dGFtcCBTZXJ2aWNloIIOPDCCBPEwggPZoAMCAQICEzMAAAEeDrzlSxaiAxsAAAAA -->
+<!-- AR4wDQYJKoZIhvcNAQELBQAwfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hp -->
+<!-- bmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jw -->
+<!-- b3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAw -->
+<!-- HhcNMTkxMTEzMjE0MDQwWhcNMjEwMjExMjE0MDQwWjCByjELMAkGA1UEBhMCVVMx -->
+<!-- EzARBgNVBAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoT -->
+<!-- FU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjElMCMGA1UECxMcTWljcm9zb2Z0IEFtZXJp -->
+<!-- Y2EgT3BlcmF0aW9uczEmMCQGA1UECxMdVGhhbGVzIFRTUyBFU046RDZCRC1FM0U3 -->
+<!-- LTE2ODUxJTAjBgNVBAMTHE1pY3Jvc29mdCBUaW1lLVN0YW1wIFNlcnZpY2UwggEi -->
+<!-- MA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDOE7cYEKL89fBcrqzt/Bt1qpVf -->
+<!-- nrSxYwlYgs3r3C/tGlZeFEoncyqOa+RRYGQfW+p3AJHwCcWH+sZkONhw5raY7vnC -->
+<!-- tjtuKt8bvqNQ0aewxXd9utR5wWVUX5xKEezwCIfXnpwavixR+Gd6QKy91NcvE8FX -->
+<!-- QVPdVhDr3FMizOqkqchyHYrj4M9LgtxbkiDycaxsav3X68TttcwpBcMCn2obFSZj -->
+<!-- CaUVzHbGr6EfoL03Teabx0WZrEe2x7QT0ZkYQBCYmJS1UXQSAVVjqb1wnMXr7+1H -->
+<!-- 8fHLrd1/dtM2DsR/DXwnwEoz9Z1Upreflph3d1V2IbV9zKOefXgp/IB2aRS7AgMB -->
+<!-- AAGjggEbMIIBFzAdBgNVHQ4EFgQUjBMo55F4RuBL+36bP9mvJ9pmilswHwYDVR0j -->
+<!-- BBgwFoAU1WM6XIoxkPNDe3xGG8UzaFqFbVUwVgYDVR0fBE8wTTBLoEmgR4ZFaHR0 -->
+<!-- cDovL2NybC5taWNyb3NvZnQuY29tL3BraS9jcmwvcHJvZHVjdHMvTWljVGltU3Rh -->
+<!-- UENBXzIwMTAtMDctMDEuY3JsMFoGCCsGAQUFBwEBBE4wTDBKBggrBgEFBQcwAoY+ -->
+<!-- aHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3BraS9jZXJ0cy9NaWNUaW1TdGFQQ0Ff -->
+<!-- MjAxMC0wNy0wMS5jcnQwDAYDVR0TAQH/BAIwADATBgNVHSUEDDAKBggrBgEFBQcD -->
+<!-- CDANBgkqhkiG9w0BAQsFAAOCAQEALmTcjnWWI5CCEyJUDSXodjSHPN2w3oiARSDv -->
+<!-- g5jI27H2hj7r9C+/+eMU5kfkzI9mTJ/3m1uaUyaGvWO+aGXfF6hTvyhGAQo2oclw -->
+<!-- uQccPqVqk+9ARrIPptCHRmGhQAyWEJujVgtWrWN/KtKLHH6GWIBkeExySJF2aTfu -->
+<!-- 7j69cgPz5DDSvl3UmghUBl1uTXUh/0MeQskhdwfJ4BKUaLO2qAAXmlQH42tRVasa -->
+<!-- 0qNYMdPm7xF1YQVlr1EBnvm9lUHTab0NqVF+Eu6kbn3LUs0ogHgWmBAmkQjWOayt -->
+<!-- aLywMIhHdwYOyp7SwaJUHx69cP1XNrOdoknGhUXodOHSXX4hbTCCBnEwggRZoAMC -->
+<!-- AQICCmEJgSoAAAAAAAIwDQYJKoZIhvcNAQELBQAwgYgxCzAJBgNVBAYTAlVTMRMw -->
+<!-- EQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQHEwdSZWRtb25kMR4wHAYDVQQKExVN -->
+<!-- aWNyb3NvZnQgQ29ycG9yYXRpb24xMjAwBgNVBAMTKU1pY3Jvc29mdCBSb290IENl -->
+<!-- cnRpZmljYXRlIEF1dGhvcml0eSAyMDEwMB4XDTEwMDcwMTIxMzY1NVoXDTI1MDcw -->
+<!-- MTIxNDY1NVowfDELMAkGA1UEBhMCVVMxEzARBgNVBAgTCldhc2hpbmd0b24xEDAO -->
+<!-- BgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jvc29mdCBDb3Jwb3JhdGlvbjEm -->
+<!-- MCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAgUENBIDIwMTAwggEiMA0GCSqG -->
+<!-- SIb3DQEBAQUAA4IBDwAwggEKAoIBAQCpHQ28dxGKOiDs/BOX9fp/aZRrdFQQ1aUK -->
+<!-- AIKF++18aEssX8XD5WHCdrc+Zitb8BVTJwQxH0EbGpUdzgkTjnxhMFmxMEQP8WCI -->
+<!-- hFRDDNdNuDgIs0Ldk6zWczBXJoKjRQ3Q6vVHgc2/JGAyWGBG8lhHhjKEHnRhZ5Ff -->
+<!-- gVSxz5NMksHEpl3RYRNuKMYa+YaAu99h/EbBJx0kZxJyGiGKr0tkiVBisV39dx89 -->
+<!-- 8Fd1rL2KQk1AUdEPnAY+Z3/1ZsADlkR+79BL/W7lmsqxqPJ6Kgox8NpOBpG2iAg1 -->
+<!-- 6HgcsOmZzTznL0S6p/TcZL2kAcEgCZN4zfy8wMlEXV4WnAEFTyJNAgMBAAGjggHm -->
+<!-- MIIB4jAQBgkrBgEEAYI3FQEEAwIBADAdBgNVHQ4EFgQU1WM6XIoxkPNDe3xGG8Uz -->
+<!-- aFqFbVUwGQYJKwYBBAGCNxQCBAweCgBTAHUAYgBDAEEwCwYDVR0PBAQDAgGGMA8G -->
+<!-- A1UdEwEB/wQFMAMBAf8wHwYDVR0jBBgwFoAU1fZWy4/oolxiaNE9lJBb186aGMQw -->
+<!-- VgYDVR0fBE8wTTBLoEmgR4ZFaHR0cDovL2NybC5taWNyb3NvZnQuY29tL3BraS9j -->
+<!-- cmwvcHJvZHVjdHMvTWljUm9vQ2VyQXV0XzIwMTAtMDYtMjMuY3JsMFoGCCsGAQUF -->
+<!-- BwEBBE4wTDBKBggrBgEFBQcwAoY+aHR0cDovL3d3dy5taWNyb3NvZnQuY29tL3Br -->
+<!-- aS9jZXJ0cy9NaWNSb29DZXJBdXRfMjAxMC0wNi0yMy5jcnQwgaAGA1UdIAEB/wSB -->
+<!-- lTCBkjCBjwYJKwYBBAGCNy4DMIGBMD0GCCsGAQUFBwIBFjFodHRwOi8vd3d3Lm1p -->
+<!-- Y3Jvc29mdC5jb20vUEtJL2RvY3MvQ1BTL2RlZmF1bHQuaHRtMEAGCCsGAQUFBwIC -->
+<!-- MDQeMiAdAEwAZQBnAGEAbABfAFAAbwBsAGkAYwB5AF8AUwB0AGEAdABlAG0AZQBu -->
+<!-- AHQALiAdMA0GCSqGSIb3DQEBCwUAA4ICAQAH5ohRDeLG4Jg/gXEDPZ2joSFvs+um -->
+<!-- zPUxvs8F4qn++ldtGTCzwsVmyWrf9efweL3HqJ4l4/m87WtUVwgrUYJEEvu5U4zM -->
+<!-- 9GASinbMQEBBm9xcF/9c+V4XNZgkVkt070IQyK+/f8Z/8jd9Wj8c8pl5SpFSAK84 -->
+<!-- Dxf1L3mBZdmptWvkx872ynoAb0swRCQiPM/tA6WWj1kpvLb9BOFwnzJKJ/1Vry/+ -->
+<!-- tuWOM7tiX5rbV0Dp8c6ZZpCM/2pif93FSguRJuI57BlKcWOdeyFtw5yjojz6f32W -->
+<!-- apB4pm3S4Zz5Hfw42JT0xqUKloakvZ4argRCg7i1gJsiOCC1JeVk7Pf0v35jWSUP -->
+<!-- ei45V3aicaoGig+JFrphpxHLmtgOR5qAxdDNp9DvfYPw4TtxCd9ddJgiCGHasFAe -->
+<!-- b73x4QDf5zEHpJM692VHeOj4qEir995yfmFrb3epgcunCaw5u+zGy9iCtHLNHfS4 -->
+<!-- hQEegPsbiSpUObJb2sgNVZl6h3M7COaYLeqN4DMuEin1wC9UJyH3yKxO2ii4sanb -->
+<!-- lrKnQqLJzxlBTeCG+SqaoxFmMNO7dDJL32N79ZmKLxvHIa9Zta7cRDyXUHHXodLF -->
+<!-- VeNp3lfB0d4wwP3M5k37Db9dT+mdHhk4L7zPWAUu7w2gUDXa7wknHNWzfjUeCLra -->
+<!-- NtvTX4/edIhJEqGCAs4wggI3AgEBMIH4oYHQpIHNMIHKMQswCQYDVQQGEwJVUzET -->
+<!-- MBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEeMBwGA1UEChMV -->
+<!-- TWljcm9zb2Z0IENvcnBvcmF0aW9uMSUwIwYDVQQLExxNaWNyb3NvZnQgQW1lcmlj -->
+<!-- YSBPcGVyYXRpb25zMSYwJAYDVQQLEx1UaGFsZXMgVFNTIEVTTjpENkJELUUzRTct -->
+<!-- MTY4NTElMCMGA1UEAxMcTWljcm9zb2Z0IFRpbWUtU3RhbXAgU2VydmljZaIjCgEB -->
+<!-- MAcGBSsOAwIaAxUAOckG4+3pqzET/o43WLrKWYzKsNyggYMwgYCkfjB8MQswCQYD -->
+<!-- VQQGEwJVUzETMBEGA1UECBMKV2FzaGluZ3RvbjEQMA4GA1UEBxMHUmVkbW9uZDEe -->
+<!-- MBwGA1UEChMVTWljcm9zb2Z0IENvcnBvcmF0aW9uMSYwJAYDVQQDEx1NaWNyb3Nv -->
+<!-- ZnQgVGltZS1TdGFtcCBQQ0EgMjAxMDANBgkqhkiG9w0BAQUFAAIFAOKw0g4wIhgP -->
+<!-- MjAyMDA3MDkwNzE1MjZaGA8yMDIwMDcxMDA3MTUyNlowdzA9BgorBgEEAYRZCgQB -->
+<!-- MS8wLTAKAgUA4rDSDgIBADAKAgEAAgIgYwIB/zAHAgEAAgIRljAKAgUA4rIjjgIB -->
+<!-- ADA2BgorBgEEAYRZCgQCMSgwJjAMBgorBgEEAYRZCgMCoAowCAIBAAIDB6EgoQow -->
+<!-- CAIBAAIDAYagMA0GCSqGSIb3DQEBBQUAA4GBAC6HycQaCQZjCZpWY+izhB3iWnQL -->
+<!-- rQwcFk82I+5wbOd2ZRXJMBH5Eb0sMAcFwN1B6AdGu7fOLdkGZeOJ1NZUzZxegJpT -->
+<!-- 6vTa/tB55k5Iv3CxjllivZ3qNeAoUMvGs+44RVOykOP2ZOtQZnhGS9iOb537JEeF -->
+<!-- vKP0GMbt5X8IIPLYMYIDDTCCAwkCAQEwgZMwfDELMAkGA1UEBhMCVVMxEzARBgNV -->
+<!-- BAgTCldhc2hpbmd0b24xEDAOBgNVBAcTB1JlZG1vbmQxHjAcBgNVBAoTFU1pY3Jv -->
+<!-- c29mdCBDb3Jwb3JhdGlvbjEmMCQGA1UEAxMdTWljcm9zb2Z0IFRpbWUtU3RhbXAg -->
+<!-- UENBIDIwMTACEzMAAAEeDrzlSxaiAxsAAAAAAR4wDQYJYIZIAWUDBAIBBQCgggFK -->
+<!-- MBoGCSqGSIb3DQEJAzENBgsqhkiG9w0BCRABBDAvBgkqhkiG9w0BCQQxIgQgYWCn -->
+<!-- 4LJCmj8W1YrO3sb2W0Ro21ug7la5ZtZfxrhVM38wgfoGCyqGSIb3DQEJEAIvMYHq -->
+<!-- MIHnMIHkMIG9BCBzO+RYw99xOlHlvaefPKE3cS3NJdWU8foiBBwPjdZfRzCBmDCB -->
+<!-- gKR+MHwxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpXYXNoaW5ndG9uMRAwDgYDVQQH -->
+<!-- EwdSZWRtb25kMR4wHAYDVQQKExVNaWNyb3NvZnQgQ29ycG9yYXRpb24xJjAkBgNV -->
+<!-- BAMTHU1pY3Jvc29mdCBUaW1lLVN0YW1wIFBDQSAyMDEwAhMzAAABHg685UsWogMb -->
+<!-- AAAAAAEeMCIEIAQKknHHtzyZ0f2sBiioqupDkiS2d1bUTm399WZYmq2XMA0GCSqG -->
+<!-- SIb3DQEBCwUABIIBAFADEuL244JtdRN/dBPBh1onw4qbQtQpUMt8OQD2L7QYb/Xl -->
+<!-- FHmh8ewWOqcyU7bEP9CQb4mtmo3IYTM8fMrwd/UwAacdik5Cb92UF6pQ4ErHA0qe -->
+<!-- Z1rcF8n2kZkqBB60SbDpL6fBKtuwvzaP/PdeaNeDU2Ck8S0qGWKMvNA94tVj8R+l -->
+<!-- pdw+eKnTxziwlBxEHS+7HGlm6RC+ZElvN5WxtAjnPRNqru1m3vSjgrnXCRy9Xfz3 -->
+<!-- q/t4S7jUhYqLjMk4UfFkZXI7qk1g26megNWWhu+xTzGjfU9SUhJN3JBUE7eZ6odX -->
+<!-- tnrJDIT20vIUiJUlgqSr2ArgqNgmKWIN5y7SO/k= -->
+<!-- SIG # End signature block -->

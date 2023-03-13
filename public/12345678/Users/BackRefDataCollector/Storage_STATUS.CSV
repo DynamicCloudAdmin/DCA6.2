@@ -1,0 +1,9 @@
+TestCat,TestName,Severity
+Storage,Ensure external storage providers available in Outlook on the Web are restricted,Executing
+Storage,Ensure external storage providers available in Outlook on the Web are restricted,Medium
+Storage,Ensure expiration time for external sharing links is set,Executing
+Storage,Ensure expiration time for external sharing links is set,Passed
+Storage,Block OneDrive for Business sync from unmanaged devices,Executing
+Storage,Block OneDrive for Business sync from unmanaged devices,High
+Storage,Ensure document sharing is being controlled by domains with whitelist or blacklist,Executing
+Storage,Ensure document sharing is being controlled by domains with whitelist or blacklist,Passed

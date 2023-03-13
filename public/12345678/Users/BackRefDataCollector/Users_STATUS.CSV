@@ -1,0 +1,27 @@
+TestCat,TestName,Severity
+Users,Office 365 Users Licensing Test,Executing
+Users,Office 365 Users Licensing Test,High
+Users,Office 365 Users Deleted Test,Executing
+Users,Office 365 Users Deleted Test,Medium
+Users,Office 365 Users Disabled Test,Executing
+Users,Office 365 Users Disabled Test,Passed
+Users,Office 365 Users Reconciliation Test,Executing
+Users,Office 365 Users Reconciliation Test,Passed
+Users,Office 365 Users Password Never Expires Test,Executing
+Users,Office 365 Users Password Never Expires Test,Passed
+Users,Office 365 Users Sync Test,Executing
+Users,Office 365 Users Sync Test,Passed
+Users,Office 365 Users Provisioning Test,Executing
+Users,Office 365 Users Provisioning Test,Passed
+Users,Office 365 Blocked Users Test,Executing
+Users,Office 365 Blocked Users Test,Passed
+Users,Office 365 Users Not Changed Password Test,Executing
+Users,Office 365 Users Not Changed Password Test,High
+Users,Office 365 Users With Company Administrators Test,Executing
+Users,Office 365 Users With Company Administrators Test,Passed
+Users,Office 365 Users Deleted and Licensed Test,Executing
+Users,Office 365 Users Deleted and Licensed Test,Medium
+Users,Office 365 Groups Without Members Test,Executing
+Users,Office 365 Groups Without Members Test,Medium
+Users,Office 365 Groups Without Description Test,Executing
+Users,Office 365 Groups Without Description Test,Low

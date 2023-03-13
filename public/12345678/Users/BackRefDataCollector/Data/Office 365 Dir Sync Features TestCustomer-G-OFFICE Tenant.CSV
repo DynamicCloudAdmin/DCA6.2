@@ -1,0 +1,16 @@
+DIR Sync Feature, Feature Status
+BlockCloudObjectTakeoverThroughHardMatch,False
+BlockSoftMatch,False
+DeviceWriteback,False
+DirectoryExtensions,False
+DuplicateProxyAddressResiliency,False
+DuplicateUPNResiliency,False
+EnableSoftMatchOnUpn,False
+EnableUserForcePasswordChangeOnLogon,False
+EnforceCloudPasswordPolicyForPasswordSyncedUsers,False
+PasswordSync,False
+PasswordWriteBack,False
+SynchronizeUpnForManagedUsers,False
+UnifiedGroupWriteback,False
+UserWriteback,False
+BypassDirSyncOverrides,False

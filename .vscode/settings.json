@@ -1,0 +1,4 @@
+{
+    "appService.defaultWebAppToDeploy": "/subscriptions/dc75afbf-9676-4c02-aa0c-96659a624682/resourceGroups/appsvc_linux_centralus/providers/Microsoft.Web/sites/DynamicCloud",
+    "appService.deploySubpath": "."
+}

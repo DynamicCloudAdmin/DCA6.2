@@ -1,0 +1,10 @@
+AllParaNow: RegisterMECall::NirmalTest@DynamicPacks.Net:::12345678:User:NONE
+CopyPolFrom: User
+CopyFromValue: NONE
+CustString: EmailID,YourAzureID,YourCompany,YourTelNumber,TRPKey,AuthTemplate
+TRP Key Is Valid
+Customer Database Found
+Azure ID NOT found
+Good To Go and Register user: NirmalTest@DynamicPacks.Net
+FinalMSGFileData: Success
+TRP Directory is already available...

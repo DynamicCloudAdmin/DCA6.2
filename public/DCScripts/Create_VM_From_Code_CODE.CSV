@@ -1,0 +1,55 @@
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$subscriptionId = 'yourSubscriptionId'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$resourceGroupName ='yourResourceGroupName'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$diskName = 'yourDiskName'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$location = 'westus'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$virtualNetworkName = 'yourVirtualNetworkName'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$virtualMachineName = 'yourVirtualMachineName'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$virtualMachineSize = 'Standard_DS3'
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#Select-AzSubscription -SubscriptionId $SubscriptionId
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$disk =  Get-AzDisk -ResourceGroupName $resourceGroupName -DiskName $diskName
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$VirtualMachine = New-AzVMConfig -VMName $virtualMachineName -VMSize $virtualMachineSize
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$VirtualMachine = Set-AzVMOSDisk -VM $VirtualMachine -ManagedDiskId $disk.Id -CreateOption Attach -Windows
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$publicIp = New-AzPublicIpAddress -Name ($VirtualMachineName.ToLower()+'_ip') -ResourceGroupName $resourceGroupName -Location $location -AllocationMethod Dynamic
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$vnet = Get-AzVirtualNetwork -Name $virtualNetworkName -ResourceGroupName $resourceGroupName
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$nic = New-AzNetworkInterface -Name ($VirtualMachineName.ToLower()+'_nic') -ResourceGroupName $resourceGroupName -Location $location -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIp.Id
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#$VirtualMachine = Add-AzVMNetworkInterface -VM $VirtualMachine -Id $nic.Id
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#
+Create VM From Code#CredCode#New-AzVM -VM $VirtualMachine -ResourceGroupName $resourceGroupName -Location $location

@@ -1,0 +1,70 @@
+HKLM:\TEMP\Software\Policies\Microsoft\Windows\Control Panel\Desktop;ScreenSaveActive:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced;ListviewAlphaSelect:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced;ListviewShadow:NF
+HKLM:\TEMP\ControlPanel\Desktop\WindowMetrics;MinAnimate:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced;TaskbarAnimations:NF
+HKLM:\TEMP\Software\Microsoft\Windows\DWM;EnableAeroPeek:NF
+HKLM:\TEMP\Software\Microsoft\Windows\DWM;AlwaysHibernateThumbnails:NF
+HKLM:\TEMP\Control Panel\Desktop;FontSmoothing:NF
+HKLM:\TEMP\Control Panel\Desktop;CursorBlinkRate:NF
+HKLM:\TEMP\ControlPanel\Desktop;MenuShowDelay:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\VisualEffects;VisualFXSetting:NF
+HKLM:\TEMP\Control Panel\Desktop;DragFullWindows:NF
+HKLM:\TEMP\Control Panel\International\User Profile;HttpAcceptLanguageOptOut:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;ScoobeSystemSettingEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SubscribedContent-353698Enabled:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced;ShowInfoTip:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Explorer\Advanced;IconsOnly:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.SecurityAndMaintenance;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.SkyDrive.Desktop;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.Windows.Photos_8wekyb3d8bbwe!App;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.WindowsStore_8wekyb3d8bbwe!App;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.Suggested;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.calendar;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.Windows.Cortana_cw5n1h2txyewy!CortanaUI;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\microsoft.windowscommunicationsapps_8wekyb3d8bbwe!microsoft.windowslive.mail;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.MicrosoftEdge_8wekyb3d8bbwe!MicrosoftEdge;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.AudioTroubleshooter;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.AutoPlay;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.BackgroundAccess;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.BdeUnlock;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Microsoft.BingNews_8wekyb3d8bbwe!AppexNews;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\windows.immersivecontrolpanel_cw5n1h2txyewy!microsoft.windows.immersivecontrolpanel;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.System.Continuum;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.RasToastNotifier;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.HelloFace;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Notifications\Settings\Windows.SystemToast.WiFiNetworkManager;Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SubscribedContent-338389Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SubscribedContent-353698Enabled:NF
+HKLM:\Temp\SOFTWARE\Microsoft\InputPersonalization;RestrictImplicitTextCollection:NF
+HKLM:\Temp\SOFTWARE\Microsoft\InputPersonalization;RestrictImplicitInkCollection:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.Photos_8wekyb3d8bbwe;Disabled:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.Windows.Photos_8wekyb3d8bbwe;DisabledByUser:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.SkypeApp_kzf8qxf38zg5c;Disabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;ContentDeliveryAllowed:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;OemPreInstalledAppsEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;PreInstalledAppsEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SilentInstalledAppsEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;PreInstalledAppsEverEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SubscribedContent-338388Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SubscribedContent-338387Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager;SystemPaneSuggestionsEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Siuf\Rules;NumberOfSIUFInPeriod:NF
+HKLM:\TEMP\SOFTWARE\Policies\Microsoft\Windows\CloudContent;DisableTailoredExperiencesWithDiagnosticData:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\Feeds;ShellFeedsTaskbarViewMode:NF
+HKLM:\TEMP\Control Panel\Desktop\WindowMetrics;MinAnimate:NF
+HKLM:\TEMP\Control Panel\Keyboard;KeyboardDelay:NF
+HKLM:\TEMP\System\GameConfigStore;GameDVR_Enabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Search;BingSearchEnabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Search;CortanaConsent:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.SkypeApp_kzf8qxf38zg5c;DisabledByUser:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.YourPhone_8wekyb3d8bbwe;DisabledByUser:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.YourPhone_8wekyb3d8bbwe;Disabled:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.MicrosoftEdge_8wekyb3d8bbwe;DisabledByUser:NF
+HKLM:\TEMP\Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications\Microsoft.MicrosoftEdge_8wekyb3d8bbwe;Disabled:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Personalization\Settings;AcceptedPrivacyPolicy:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\InputPersonalization\TrainedDataStore;HarvestContacts:NF
+HKLM:\TEMP\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\AutoplayHandlers;DisableAutoplay:NF
+HKLM:\TEMP\SOFTWARE\Policies\Microsoft\Windows\CloudContent;DisableWindowsSpotlightOnActionCenter:NF
+HKLM:\TEMP\SOFTWARE\Policies\Microsoft\Windows\CloudContent;DisableThirdPartySuggestions:NF
+HKLM:\TEMP\SOFTWARE\Policies\Microsoft\Messenger\Client;CEIP:NF

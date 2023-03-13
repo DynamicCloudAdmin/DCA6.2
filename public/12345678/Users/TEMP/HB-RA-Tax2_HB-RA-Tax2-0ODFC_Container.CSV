@@ -1,0 +1,5 @@
+Enabled       : 1
+VHDLocations  : {\\uncpdwvdstg.file.core.windows.net\wvdprofiles}
+WHDAccessMode : 3
+VHDAccessMode : 3
+ODFCIncludeList:Everyone

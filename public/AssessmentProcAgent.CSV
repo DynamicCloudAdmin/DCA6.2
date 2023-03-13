@@ -1,0 +1,3 @@
+Set Name, Set Type, Execution, Day, Hour, Notification Condition, Email Template
+NewSet Def SET,Default Set,Disabled, Not Applicable, Not Applicable, Not Applicable, Not Applicable
+AssSetNEWNEW,Assessment Set,Disabled, None, None, Do Not Notify, None

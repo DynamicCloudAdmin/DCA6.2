@@ -1,0 +1,11 @@
+TestCat,TestName,Severity
+Auditing,Ensure Microsoft 365 audit log search is Enabled,Executing
+Auditing,Ensure Microsoft 365 audit log search is Enabled,Passed
+Auditing,Ensure Guest Users are reviewed at least biweekly,Executing
+Auditing,Ensure Guest Users are reviewed at least biweekly,Medium
+Auditing,Ensure mailbox auditing for all users is Enabled,Executing
+Auditing,Ensure mailbox auditing for all users is Enabled,Passed
+Auditing,Ensure the spoofed domains report is review weekly,Executing
+Auditing,Ensure the spoofed domains report is review weekly,Medium
+Auditing,Ensure the Application Usage report is reviewed at least weekly,Executing
+Auditing,Ensure the Application Usage report is reviewed at least weekly,Medium

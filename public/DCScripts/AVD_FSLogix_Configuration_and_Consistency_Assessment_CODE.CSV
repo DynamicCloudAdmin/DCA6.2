@@ -1,0 +1,533 @@
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$TemplateToUse = "FSLogix Two"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$ScopedHostPools = "ALL"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$TargetHostsInPools = "COLLECT"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$ScopedHosts = "$NewLocNow\public\$TRPKey\Users\TEMP\ScopedHosts.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#Remove-item $ScopedHosts -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$STR = "Host Pool, Session Host,ResGroup"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#Add-Content $ScopedHosts $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$STR = "Scoped Host Pools: $ScopedHostPools"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#$STR = "Target Hosts: $TargetHostsInPools"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#IF ($TargetHostsInPools -eq "" -or $TargetHostsInPools -eq $null)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "Target Hosts NOT Defined..."
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "Aborting..."
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	IF ($TargetHostsInPools -eq "COLLECT")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$R = Get-AzWvdHostPool | Select-Object *
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$AllPoolsNow = ""
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		ForEach ($Item in $R)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$HostPool = $Item.Name
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$ThisLine = $Item.ApplicationGroupReference
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$R = $ThisLine
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$A, $B, $C, $D, $E, $F = $R.Split("/")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$FinalResGroup = $E
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$DoOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			IF ($ScopedHostPools -eq "ALL")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$DoOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$SplittedPools = $ScopedHostPools.Split(",")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				foreach ($SplitPool in $SplittedPools)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($SplitPool.ToLower() -eq $HostPool.ToLower())
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$DoOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						break
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			IF ($DoOrNot -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FinalHostToAddNow = "NONE"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$AllHosts = Get-AzWvdSessionHost -HostPoolName $HostPool -ResourceGroupName $FinalResGroup | Select-Object Name, Status
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				foreach ($HostNow in $AllHosts)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($HostNow.Status -eq "Available")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$A = $HostNow.Name
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$B, $C, $D = $A.Split("/")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalHostToAddNow, $U = $C.Split(".")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$STR = $HostPool + "," + $FinalHostToAddNow + "," + $FinalResGroup
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				Add-Content $ScopedHosts $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$ThisSplit = $TargetHostsInPools.Split(":")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		foreach ($Item in $ThisSplit)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$HostPool, $FinalHostToAddNow, $FinalResGroup = $Item.Split(":")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$STR = $HostPool + "," + $FinalHostToAddNow + "," + $FinalResGroup
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			Add-Content $ScopedHosts $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$AllPoolsFile = "$NewLocNow\public\$TRPKey\Users\TEMP\FSLogixAllHostPools.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Remove-Item $AllPoolsFile -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "Host Pool,"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $AllPoolsFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$TargetCSV = Import-Csv $ScopedHosts
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$AllPoolsNow = ""
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	ForEach ($Item in $TargetCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$HostPool = $Item.'Host Pool'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$FinalResGroup = $Item.ResGroup
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$DoneOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		IF ($DoOrNot -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$STR = $HostPool + ","
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			Add-Content $AllPoolsFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$AllPoolsNow = $Item.Name + "," + $AllPoolsNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$STR = "Processing Host Pool: " + $HostPool
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$STR = "Resource Group: " + $FinalResGroup
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$FinalHostToTarget = $Item.'Session Host'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			IF ($FinalHostToTarget -eq "NONE")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$STR = "Host To Target: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FSLogixResultFileProfC = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $HostPool + "_" + $FinalHostToTarget + "PROF_Container.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				Remove-Item $FSLogixResultFileProfC -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FSLogixResultFileODFCC = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $HostPool + "_" + $FinalHostToTarget + "ODFC_Container.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				Remove-Item $FSLogixResultFileODFCC -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$STR = "Checking VM Status: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$AllGoodOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$Error.Clear()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$AllVMs = Get-AzVM -Name $FinalHostToTarget -Status | Select-Object Name, PowerState
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF ($Error.Count -eq 0)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					foreach ($VM in $AllVMs)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						IF ($VM.Name.ToLower() -eq $FinalHostToTarget.ToLower())
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							IF ($VM.PowerState -eq "VM running")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$EXEVMStatus = "VM Running"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$STR = "VM is running"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$EXEVMStatus = "VM NOT Running"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$STR = "VM is NOT running"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$AllGoodOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							break
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "Error Checking VM Status: " + $Error
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$AllGoodOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF ($AllGoodOrNot -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$AllJobsFile = "$NewLocNow\Public\$TRPKey\Users\TEMP\AllJobs.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Remove-Item $AllJobsFile -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "JobID,HostName"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $AllJobsFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "Triggering Job for VM: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FinalScriptPath = "$NewLocNow\Public\DPConfig\DPCode\VMScriptTest.ps1"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$Error.Clear()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$Status = Invoke-AzVMRunCommand -ResourceGroupName $FinalResGroup -Name $FinalHostToTarget -CommandId 'RunPowerShellScript' -ScriptPath "$FinalScriptPath" -AsJob
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$ThisJobID = $Status.ID.ToString() + "," + $ThisHostName
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $AllJobsFile $ThisJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "Checking to see if Job Was completed for VM: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$TimeStart = Get-Date
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$TimeEnd = $timeStart.addminutes(8)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Do
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$AllJobsFileCSV = Import-Csv $AllJobsFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$TimeNow = Get-Date
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$STR = "Status - 8 Minutes to run: Start: " + $TimeStart.ToString() + " Now: " + $TimeNow.ToString()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						if ($TimeNow -ge $TimeEnd)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ThisHostName = $JobIDNow.HostName
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Stop-Job -Id $ThisJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Remove-Job -Id $ThisJobID -Force
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$STR = "Job was removed: ID: " + $ThisJobID + " For Host: " + $ThisHostName
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$STR = "Error: Took Longer time to completed for VM: $FinalHostToTarget"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$STR = "Aborting for VM: $FinalHostToTarget"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$AllGoodOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Start-Sleep -Seconds 10
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$DoneOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$FinalJobID = $ThisJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$JobStatus = Get-Job -Id $FinalJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							IF ($JobStatus.State -eq "Running")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$DoneOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						IF ($DoneOrNot -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$AllJobsFileCSV = Import-Csv $AllJobsFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ThisHostName = $JobIDNow.HostName
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID -as [int]
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$JobStatus = Get-Job -Id $ThisJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								IF ($JobStatus.State -eq "Completed")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#									
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							foreach ($JobIDNow in $AllJobsFileCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ThisJobID = $JobIDNow.JobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Stop-Job -Id $ThisJobID
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Remove-Job -Id $ThisJobID -Force
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$STR = "Job Completed for VM: $FinalHostToTarget"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							Break
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Until ($TimeNow -ge $TimeEnd)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF ($AllGoodOrNot -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "VM Job Test was a Success for VM:" + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$STR = "Executing Script for Host: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FinalScriptPath = "$NewLocNow\Public\DPConfig\DPCode\AVD\FSLogixConfigZERO.ps1"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$Error.Clear()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$Status = Invoke-AzVMRunCommand -ResourceGroupName $FinalResGroup -Name $FinalHostToTarget -CommandId 'RunPowerShellScript' -ScriptPath "$FinalScriptPath"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($Error.Count -eq 0)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$STR = "Script Executed Successfully on Host: " + $FinalHostToTarget
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$ResTMP = "$NewLocNow\Public\$TRPKey\Users\FSLogixResultsTMP.DPC"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Remove-Item $ResTMP -ErrorAction SilentlyContinue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$STR = $Status.value[0].Message
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Add-Content $ResTMP $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						foreach ($NewItem in Get-Content $ResTMP)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$A, $B = $NewItem.Split(";")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							IF ($A -eq "PROFILE" -or $A -eq "PROF")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FSLogixResultFileProfC $B
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							IF ($A -eq "ODFC")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								Add-Content $FSLogixResultFileODFCC $B
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$STR = "Error Executing Script: " + $ThisHostName
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$STR = "Error: " + $Error
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$AVDDash = "$NewLocNow\public\DPConfig\DPCode\AVD\AVDDPDASH.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$DashCSV = Import-Csv $AVDDash
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$AllPoolsNow = ""
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$PoolsCSV = Import-Csv $AllPoolsFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	foreach ($Item in $PoolsCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$AllPoolsNow = $Item.'Host Pool' + "," + $AllPoolsNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "Script Execution is Over"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "Collecting Results"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $FinalLogFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$STR = "FSLogix Setting/Test,Container Type,Consistency Status," + $AllPoolsNow + "Config Status"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	Add-Content $FinalResultFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$ReplName = $TemplateToUse.replace(" ", "_")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$ParamFile = "$NewLocNow\public\DPConfig\" + $ReplName + "_FSLOGIX_ASS.DPC"	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$FSLogixTestsFile = $ParamFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$PropCSV = Import-Csv $FSLogixTestsFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	$PoolsCSV = Import-Csv $AllPoolsFile
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	foreach ($Item in $PropCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$ThisProp = $Item.FSLogixTest.Trim()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$ThisReg = $Item.RegEntry
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$ContType = $Item.Type
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$DefValue = $Item.ExpValue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$CheckEXPValue = $Item.ExpValue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$FinalProp = '"' + $ThisProp + "`n[" + $ThisReg + "]" + '"'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		$ThisDesNow = $Item.Description
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		IF ($ThisProp -eq "" -or $ThisProp -eq $null)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$ThisFinalPropName = $ThisProp
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$AllDataNow = ""
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$AnyGap = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$FCContainer = New-Object System.Collections.ArrayList
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			ForEach ($PoolItem in $PoolsCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ThisHostPoolR = $PoolItem.'Host Pool'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FinalHostToTarget = "NONE"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ValueToAddInCont = ""
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$TargetCSV = Import-Csv $ScopedHosts
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				ForEach ($ItemInHostFile in $TargetCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$TargetHostPool = $ItemInHostFile.'Host Pool'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($TargetHostPool -eq $ThisHostPoolR)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalHostToTarget = $ItemInHostFile.'Session Host'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FilesFoundOrNo = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FSLogixResultFileProfCCSV = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $ThisHostPoolR + "_" + $FinalHostToTarget + "PROF_Container.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF (Test-Path $FSLogixResultFileODFCCCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FilesFoundOrNo = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FSLogixResultFileODFCCCSV = "$NewLocNow\public\$TRPKey\Users\TEMP\" + $ThisHostPoolR + "_" + $FinalHostToTarget + "ODFC_Container.CSV"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF (Test-Path $FSLogixResultFileODFCCCSV)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FilesFoundOrNo = "Yes"					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF ($FilesFoundOrNo -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($ContType -eq "ProfileContainer")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$CSVTestFile = Get-Content $FSLogixResultFileProfCCSV
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($ContType -eq "OfficeContainer")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$CSVTestFile = Get-Content $FSLogixResultFileODFCCCSV						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FoundORNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$GotFinalPropNameNow = $DefValue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					foreach ($ItemCSV in $CSVTestFile)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$A, $B = $ItemCSV.Split(":")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalA = $A.Trim()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalB = $B.Trim()
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalValueSet = $FinalB
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						IF ($ThisReg -eq $FinalA)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$SomethingWrongOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							IF ($FinalB.ToLower() -eq $CheckEXPValue.ToLower())
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$DefPropClass = '<div class = "FSLogixAllGoodClass">' + $FinalValueSet + '</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$AnyGap = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ValueToAddInCont = $FinalValueSet
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$FinalNowNew = "Value:" + $FinalB + " Expected: " + $DefValue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$DefPropClass = '<div class = "RDPPropSomethingWrong">' + $FinalNowNew + '</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$AnyGap = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								
+AVD FSLogix Configuration and Consistency Assessment#CredCode#								$ValueToAddInCont = $FinalValueSet
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							$FoundORNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							break
+AVD FSLogix Configuration and Consistency Assessment#CredCode#							
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						}						
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($FoundORNot -eq "No")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$FinalNowNew = '<span class="FSLogixNotFoundClass">Not Found</span><br>' + "Expected: " + $DefValue
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$DefPropClass = '<div class = "RDPPropSomethingWrong">' + $FinalNowNew + '</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$GotFinalPropNameNow = $DefPropClass
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$AnyGap = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$ValueToAddInCont = "Not Found"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#										
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$AllDataNow = $GotFinalPropNameNow + "," + $AllDataNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$GotFinalPropNameNow = "No Result"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$AllDataNow = $GotFinalPropNameNow + "," + $AllDataNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$ValueToAddInCont = "No Result"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ContFoundOrNot = "No"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				foreach ($FItem in $FCContainer)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					IF ($FItem -eq $ValueToAddInCont)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						$ContFoundOrNot = "Yes"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#						break
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				IF ($ContFoundOrNot -eq "No")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$CompletedText = $ValueToAddInCont
+AVD FSLogix Configuration and Consistency Assessment#CredCode#					$FCContainer.Add($CompletedText) > $null
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			IF ($AnyGap -eq "Yes")
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ThisDivNow = '<div class="AllViewHighTEXTClass"><i class="fa fa-times-circle" style="font-size: 12px;margin-right: 5px;" aria-hidden="true"></i>Failed</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FinalDetDivToAdd = $ThisDivNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ThisDivNow = '<div class="AllViewPassedTEXTClass"><i class="fa fa-check-circle" style="font-size: 12px;margin-right: 5px;" aria-hidden="true"></i>Passed</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$FinalDetDivToAdd = $ThisDivNow
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$ConsistencyStatus = "Consistent"
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			IF ($FCContainer.Count -gt 1)
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ThisConDiv = '<div class="ConsInconsClassForAVD">Inconsistent</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ConsistencyStatus = $ThisConDiv
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			else
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			{
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ThisConDiv = '<div class="ConsInconsClassForAVD">Consistent</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#				$ConsistencyStatus = $ThisConDiv
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$ContTypeDiv = '<div class="ConsInconsClassForAVD">' + $ContType + '</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$InsertRegEnt = '<br><p class="FSLogixRegEntNameClass">' + $ThisReg + '</p>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$PropClassHere = '<div class = "RDPPropPropNameClass">' + $ThisProp + $InsertRegEnt + '</div><div class = "RDPPropDescriptionSet">' + $ThisDesNow + '</div>'
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			$STR = $PropClassHere + "," + $ContTypeDiv + "," + $ConsistencyStatus + "," + $AllDataNow + $FinalDetDivToAdd			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			Add-Content $FinalResultFile $STR
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#			
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#		
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#	
+AVD FSLogix Configuration and Consistency Assessment#CredCode#}
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#
+AVD FSLogix Configuration and Consistency Assessment#CredCode#

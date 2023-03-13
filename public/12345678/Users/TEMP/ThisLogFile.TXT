@@ -1,0 +1,278 @@
+Scoped Host Pools: ALL
+Target Hosts: COLLECT
+Collecting Available Session Hosts...
+Processing Host Pool: EngineeringTest
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-ET-1
+Checking VM Status: HB-AVD-ET-1
+VM is running
+Triggering Job for VM: HB-AVD-ET-1
+Checking to see if Job Was completed for VM: HB-AVD-ET-1
+Status - 8 Minutes to run: Start: 28-02-2023 17:07:50 Now: 28-02-2023 17:07:50
+Job Completed for VM: HB-AVD-ET-1
+VM Job Test was a Success for VM:HB-AVD-ET-1
+Executing Script for Host: ONE.PS1:HB-AVD-ET-1
+Script Executed Successfully on Host: HB-AVD-ET-1
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-ET-1
+Script Executed Successfully on Host: HB-AVD-ET-1
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-ET-1
+Script Executed Successfully on Host: HB-AVD-ET-1
+Processing Host Pool: HB-AVD-Trusteer-W11
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-W11T-2
+Checking VM Status: HB-AVD-W11T-2
+VM is running
+Triggering Job for VM: HB-AVD-W11T-2
+Checking to see if Job Was completed for VM: HB-AVD-W11T-2
+Status - 8 Minutes to run: Start: 28-02-2023 17:13:32 Now: 28-02-2023 17:13:32
+Job Completed for VM: HB-AVD-W11T-2
+VM Job Test was a Success for VM:HB-AVD-W11T-2
+Executing Script for Host: ONE.PS1:HB-AVD-W11T-2
+Script Executed Successfully on Host: HB-AVD-W11T-2
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-W11T-2
+Script Executed Successfully on Host: HB-AVD-W11T-2
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-W11T-2
+Script Executed Successfully on Host: HB-AVD-W11T-2
+Processing Host Pool: HB-AVD-W11
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-W11-5
+Checking VM Status: HB-AVD-W11-5
+VM is running
+Triggering Job for VM: HB-AVD-W11-5
+Checking to see if Job Was completed for VM: HB-AVD-W11-5
+Status - 8 Minutes to run: Start: 28-02-2023 17:19:45 Now: 28-02-2023 17:19:45
+Job Completed for VM: HB-AVD-W11-5
+VM Job Test was a Success for VM:HB-AVD-W11-5
+Executing Script for Host: ONE.PS1:HB-AVD-W11-5
+Script Executed Successfully on Host: HB-AVD-W11-5
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-W11-5
+Script Executed Successfully on Host: HB-AVD-W11-5
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-W11-5
+Script Executed Successfully on Host: HB-AVD-W11-5
+Processing Host Pool: HB-INTUNE-Test
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-INTN-2
+Checking VM Status: HB-AVD-INTN-2
+VM is running
+Triggering Job for VM: HB-AVD-INTN-2
+Checking to see if Job Was completed for VM: HB-AVD-INTN-2
+Status - 8 Minutes to run: Start: 28-02-2023 17:26:25 Now: 28-02-2023 17:26:25
+Job Completed for VM: HB-AVD-INTN-2
+VM Job Test was a Success for VM:HB-AVD-INTN-2
+Executing Script for Host: ONE.PS1:HB-AVD-INTN-2
+Script Executed Successfully on Host: HB-AVD-INTN-2
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-INTN-2
+Script Executed Successfully on Host: HB-AVD-INTN-2
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-INTN-2
+Script Executed Successfully on Host: HB-AVD-INTN-2
+Processing Host Pool: HB-Multisession-Frontline
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-HD-9
+Checking VM Status: HB-AVD-HD-9
+VM is running
+Triggering Job for VM: HB-AVD-HD-9
+Checking to see if Job Was completed for VM: HB-AVD-HD-9
+Status - 8 Minutes to run: Start: 28-02-2023 17:33:09 Now: 28-02-2023 17:33:09
+Job Completed for VM: HB-AVD-HD-9
+VM Job Test was a Success for VM:HB-AVD-HD-9
+Executing Script for Host: ONE.PS1:HB-AVD-HD-9
+Script Executed Successfully on Host: HB-AVD-HD-9
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-HD-9
+Script Executed Successfully on Host: HB-AVD-HD-9
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-HD-9
+Script Executed Successfully on Host: HB-AVD-HD-9
+Processing Host Pool: HB-Multisession-Frontline-W11
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-HD-2
+Checking VM Status: HB-AVD-HD-2
+VM is running
+Triggering Job for VM: HB-AVD-HD-2
+Checking to see if Job Was completed for VM: HB-AVD-HD-2
+Status - 8 Minutes to run: Start: 28-02-2023 17:39:52 Now: 28-02-2023 17:39:52
+Job Completed for VM: HB-AVD-HD-2
+VM Job Test was a Success for VM:HB-AVD-HD-2
+Executing Script for Host: ONE.PS1:HB-AVD-HD-2
+Script Executed Successfully on Host: HB-AVD-HD-2
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-HD-2
+Script Executed Successfully on Host: HB-AVD-HD-2
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-HD-2
+Script Executed Successfully on Host: HB-AVD-HD-2
+Processing Host Pool: HB-Multisession-IT
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-IT-4
+Checking VM Status: HB-AVD-IT-4
+VM is running
+Triggering Job for VM: HB-AVD-IT-4
+Checking to see if Job Was completed for VM: HB-AVD-IT-4
+Status - 8 Minutes to run: Start: 28-02-2023 17:45:00 Now: 28-02-2023 17:45:00
+Job Completed for VM: HB-AVD-IT-4
+VM Job Test was a Success for VM:HB-AVD-IT-4
+Executing Script for Host: ONE.PS1:HB-AVD-IT-4
+Script Executed Successfully on Host: HB-AVD-IT-4
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-IT-4
+Script Executed Successfully on Host: HB-AVD-IT-4
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-IT-4
+Script Executed Successfully on Host: HB-AVD-IT-4
+Processing Host Pool: HB-Multisession-Standard
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-9
+Checking VM Status: HB-AVD-9
+VM is running
+Triggering Job for VM: HB-AVD-9
+Checking to see if Job Was completed for VM: HB-AVD-9
+Status - 8 Minutes to run: Start: 28-02-2023 17:50:44 Now: 28-02-2023 17:50:44
+Job Completed for VM: HB-AVD-9
+VM Job Test was a Success for VM:HB-AVD-9
+Executing Script for Host: ONE.PS1:HB-AVD-9
+Script Executed Successfully on Host: HB-AVD-9
+Waiting for 2 Minutes...
+Executing Script for Host: TWO.PS1:HB-AVD-9
+Script Executed Successfully on Host: HB-AVD-9
+Waiting for 2 Minutes...
+Executing Script for Host: THREE.PS1:HB-AVD-9
+Error Executing Script: 
+Error: An error occurred while sending the request.
+Processing Host Pool: HB-Multisession-Trusteer
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-IBMT-3
+Checking VM Status: HB-AVD-IBMT-3
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-RA-Litigation
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-LIT-9
+Checking VM Status: HB-AVD-LIT-9
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-RA-Tax1
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-RA-TAX-0
+Checking VM Status: HB-RA-TAX-0
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-RA-Tax2
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-RA-Tax2-0
+Checking VM Status: HB-RA-Tax2-0
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-RemoteApps-1
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-WVD-RA-1-0
+Checking VM Status: HB-WVD-RA-1-0
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-RemoteApps-2
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-WVD-RA-2-0
+Checking VM Status: HB-WVD-RA-2-0
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-WVD-BetaTest
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-BETA-1
+Checking VM Status: HB-AVD-BETA-1
+Error Checking VM Status: An error occurred while sending the request.
+Processing Host Pool: HB-ZeroSystems-POC
+Resource Group: unc_prod_wvd_hostpool_rg
+Host To Target: HB-AVD-ZERO-1
+Checking VM Status: HB-AVD-ZERO-1
+Error Checking VM Status: An error occurred while sending the request.
+Script Execution is Over
+Collecting Results
+Processing Category: AVD Versions
+Processing Category: AVD Performance
+Processing Category: Windows Services
+Processing Category: AutoLoggers
+Processing Category: Appx Packages
+Processing Category: Scheduled Tasks
+Processing Category: AVD Antivirus
+Processing Category: Sessions Time-Out
+Processing Category: Windows & Office Updates
+Processing Category: User Experience
+Processing Category: Logon Optimization
+Processing Category: Windows Cortana
+Processing Category: Windows Telemetry and Activity Feed
+Processing Category: Office Apps
+Processing Category: SMB Optimization
+Processing Category: Visual-Effects Performance
+Processing Category: Windows System Optimization
+Processing Category: Windows Error Reporting and Feedback
+Processing Category: Web Search and Other Tweaks
+Processing Category: Windows Apps Suggestions-Installations
+Processing Category: RunTime Optimization
+Processing Category: Windows-Notifications Tweaks
+Processing Category: Windows XBOX Tweaks
+Processing Category: Windows BITS Optimization
+Processing Category: Windows Explorer Optimization
+Processing Category: Windows Edge and IE Optimization
+Processing Category: Windows Auto-Troubleshooting Optimization
+Processing Category: Windows Network Tweaks
+Script Execution is Over
+Collecting Results
+Processing Category: AVD Versions
+Processing Category: AVD Performance
+Processing Category: Windows Services
+Processing Category: AutoLoggers
+Processing Category: Appx Packages
+Processing Category: Scheduled Tasks
+Processing Category: AVD Antivirus
+Processing Category: Sessions Time-Out
+Processing Category: Windows & Office Updates
+Processing Category: User Experience
+Processing Category: Logon Optimization
+Processing Category: Windows Cortana
+Processing Category: Windows Telemetry and Activity Feed
+Processing Category: Office Apps
+Processing Category: SMB Optimization
+Processing Category: Visual-Effects Performance
+Processing Category: Windows System Optimization
+Processing Category: Windows Error Reporting and Feedback
+Processing Category: Web Search and Other Tweaks
+Processing Category: Windows Apps Suggestions-Installations
+Processing Category: RunTime Optimization
+Processing Category: Windows-Notifications Tweaks
+Processing Category: Windows XBOX Tweaks
+Processing Category: Windows BITS Optimization
+Processing Category: Windows Explorer Optimization
+Processing Category: Windows Edge and IE Optimization
+Processing Category: Windows Auto-Troubleshooting Optimization
+Processing Category: Windows Network Tweaks
+Script Execution is Over
+Collecting Results
+Processing Category: AVD Versions
+Processing Category: AVD Performance
+Processing Category: Windows Services
+Processing Category: AutoLoggers
+Processing Category: Appx Packages
+Processing Category: Scheduled Tasks
+Processing Category: AVD Antivirus
+Processing Category: Sessions Time-Out
+Processing Category: Windows & Office Updates
+Processing Category: User Experience
+Processing Category: Logon Optimization
+Processing Category: Windows Cortana
+Processing Category: Windows Telemetry and Activity Feed
+Processing Category: Office Apps
+Processing Category: SMB Optimization
+Processing Category: Visual-Effects Performance
+Processing Category: Windows System Optimization
+Processing Category: Windows Error Reporting and Feedback
+Processing Category: Web Search and Other Tweaks
+Processing Category: Windows Apps Suggestions-Installations
+Processing Category: RunTime Optimization
+Processing Category: Windows-Notifications Tweaks
+Processing Category: Windows XBOX Tweaks
+Processing Category: Windows BITS Optimization
+Processing Category: Windows Explorer Optimization
+Processing Category: Windows Edge and IE Optimization
+Processing Category: Windows Auto-Troubleshooting Optimization
+Processing Category: Windows Network Tweaks

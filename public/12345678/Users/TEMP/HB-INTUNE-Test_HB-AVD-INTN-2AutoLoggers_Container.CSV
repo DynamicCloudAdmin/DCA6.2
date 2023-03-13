@@ -1,0 +1,8 @@
+CellCore:NotDisabled
+CloudExperienceHostOOBE:NotDisabled
+DiagLog:Disabled
+ReadyBoot:Disabled
+WDIContextLog:Disabled
+WiFiDriverIHVSession:NotDisabled
+WiFiSession:Disabled
+WinPhoneCritical:NotDisabled

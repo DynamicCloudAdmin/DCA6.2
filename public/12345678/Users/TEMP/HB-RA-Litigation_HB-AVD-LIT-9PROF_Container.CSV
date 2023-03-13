@@ -1,0 +1,8 @@
+VHDLocations                         : \\uncpdwvdstg.file.core.windows.net\wvdprofiles
+Enabled                              : 1
+ProfileType                          : 3
+FlipFlopProfileDirectoryName         : 1
+RoamSearch                           : 0
+DeleteLocalProfileWhenVHDShouldApply : 1
+FoldersToRemove                      : {}
+PROFIncludeList:Everyone

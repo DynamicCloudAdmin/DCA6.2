@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<coreProperties xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.openxmlformats.org/package/2006/metadata/core-properties">
+  <dc:creator>Microsoft Corporation</dc:creator>
+  <dc:description>Microsoft Azure PowerShell: ImageBuilder cmdlets</dc:description>
+  <dc:identifier>Az.ImageBuilder</dc:identifier>
+  <version>0.2.0</version>
+  <keywords>Azure ResourceManager ARM PSModule ImageBuilder PSIncludes_Function PSFunction_Get-AzImageBuilderRunOutput PSFunction_Get-AzImageBuilderTemplate PSFunction_New-AzImageBuilderCustomizerObject PSFunction_New-AzImageBuilderDistributorObject PSFunction_New-AzImageBuilderSourceObject PSFunction_New-AzImageBuilderTemplate PSFunction_Remove-AzImageBuilderTemplate PSFunction_Start-AzImageBuilderTemplate PSFunction_Stop-AzImageBuilderTemplate PSCommand_Get-AzImageBuilderRunOutput PSCommand_Get-AzImageBuilderTemplate PSCommand_New-AzImageBuilderCustomizerObject PSCommand_New-AzImageBuilderDistributorObject PSCommand_New-AzImageBuilderSourceObject PSCommand_New-AzImageBuilderTemplate PSCommand_Remove-AzImageBuilderTemplate PSCommand_Start-AzImageBuilderTemplate PSCommand_Stop-AzImageBuilderTemplate</keywords>
+  <lastModifiedBy>NuGet, Version=3.4.4.1321, Culture=neutral, PublicKeyToken=31bf3856ad364e35;Microsoft Windows NT 6.2.9200.0;.NET Framework 4.5</lastModifiedBy>
+</coreProperties>

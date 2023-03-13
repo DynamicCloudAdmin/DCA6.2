@@ -1,0 +1,274 @@
+<div id="ID_VIEWSETNAME" style="transition: 1.3s; width: 473px;height: 338px;margin-top: 13px;margin-left: 0px;border: 1px solid #d5d5d5;border-radius: 0px;padding: 10px;box-shadow: none;padding-top: 2px;float: left;padding-bottom: 24px;" class="AllDivsAnimationNow">
+                                <div style="background: #37475f;border-radius: 5px;margin-top: -11px;height: 26px;">
+<i class="fa fa-eye" aria-hidden="true" style="padding-right: 4px; padding-top: 0px;color: #0c3d68;font-size: 25px;color:white;padding-left: 5px;padding-bottom: 7px;"></i>
+<p id="ID_WHICHMODULE" style="font-size: 10px;padding: 0px;margin: 0px;background: #37475f;color: white;text-align: left;text-transform: uppercase;font-weight: 700;border-radius: 5px;margin-top: -27px;padding-left: 40px;/*! display: inline-block; */">VIEW_SETMODULENAME</p>
+<button id="ID_VIEWMENU" onclick="ViewSetMenuFunction()" class="OfficeButton AllDivsAnimationNow" style="
+padding: 0px;
+padding-left: 10px;
+padding-right: 10px; /*! border: 2px solid #ca7d2c; */
+background: white;
+font-size: 12px;
+font-family: 'Calibri';
+margin-left: 0px;
+float: none;
+padding-bottom: 8px;
+margin-left: 10px;
+margin: 0px;
+margin-left: 0px;
+float: right; /*! margin-bottom: 10px; */
+border: 0px solid #585959 !important;
+margin-right: 0px;
+padding-bottom: 3px;
+margin-top: 1px;
+margin-left: 0px;
+border-radius: 5px !important;
+margin-top: 3px;
+margin-top: 1px;
+margin-right: 1px;
+background: black;
+color: white !important;
+padding: 0px;
+background: transparent !important;
+margin-top: -22px;
+">
+<i class="ri-menu-line" aria-hidden="true" style="padding-right: 10px; padding-top: 5px;font-size: 19px;color: white;"></i>
+</button>
+<button id="ID_VIEWREFRESH" onclick="ViewSetRefreshButtonFunction()" class="OfficeButton AllDivsAnimationNow" style="
+padding: 0px;
+padding-left: 10px;
+padding-right: 10px; /*! border: 2px solid #ca7d2c; */
+background: white;
+font-size: 12px;
+font-family: 'Calibri';
+margin-left: 0px;
+float: none;
+padding-bottom: 8px;
+margin-left: 10px;
+margin: 0px;
+margin-left: 0px;
+float: right; /*! margin-bottom: 10px; */
+border: 0px solid #585959 !important;
+margin-right: 0px;
+padding-bottom: 3px;
+margin-top: 1px;
+margin-left: 0px;
+border-radius: 5px !important;
+margin-top: 3px;
+margin-top: 1px;
+margin-right: 1px;
+background: black;
+color: white !important;
+padding: 0px;
+background: transparent !important;
+margin-top: -22px;
+">
+<i class="ri-restart-line" aria-hidden="true" style="padding-right: 10px; padding-top: 5px;font-size: 19px;color: white;"></i>
+</button>
+  
+  
+</div>
+
+<div id="ID_VIEWMENUPANEL" style="display: block; height: 176px; border: 1px solid rgb(217, 216, 216); width: 300px; overflow: hidden; border-radius: 0px;background: white;position: fixed;z-index: 99;right: 0;margin-right: 12px;box-shadow: 1px 1px 1px #dadddf;border-radius: 0px 5px 5px 5px;" class="AllDivsAnimationNow" data-highcharts-chart="3">
+
+<div style="display: inline-block;float: none;border-bottom: 2px solid #dfdbdb;width: 100%;height: 64px;" class="AllDivsAnimationNow">
+
+                                    
+<p id="ID_VIEWLASTUPDATED" style="margin: 0px;font-size: 8px;font-family: &quot;Roboto&quot;;font-weight: 500;color: #8c8c8c;padding-top: 3px;padding-left: 7px;display: block;background: white;border-radius: 0px !important;padding-bottom: 3px;padding-left: 10px;padding-right: 10px;border-bottom: 1px solid #dbd2d2;height: 22px;" class="AllDivsAnimationNow">VIEWMODLASTUPDATED
+                                    </p>
+
+                                    <p id="SSS" style="margin: 0px;font-size: 10px;font-family: &quot;Roboto&quot;;font-weight: 500;color: #5e5d5d;padding-top: 13px;padding-left: 7px;display: inline-block;" class="AllDivsAnimationNow">View Type</p>
+
+
+                                    <select name="ID_VIEWTYPENOW" id="ID_VIEWTYPENOW" onchange="ViewSetChangeDataTypeFunction()" style="
+width: 42px;
+padding: 4px;
+font-size: 11px;
+color: black;
+border: none;
+border-radius: 0px; /*! box-shadow: 0px 1px 1px #a8acae; */ /*! background: linear-gradient(90deg, rgb(167, 172, 174) 0%, rgb(227, 188, 114) 12%, rgb(228, 237, 240) 58%); */
+/*! background: linear-gradient( to bottom, #3cf 0%, #fff 100% ); */
+display: inline-block;
+margin-bottom: 5px;
+margin: 0 auto;
+border: 1px solid #cbcdce;
+border-radius: 5px; /*! display: inline; */ /*! float: right; */
+height: 29px;
+background: white;
+cursor: pointer;
+border-radius: 8px;
+margin-right: 0px;
+float: none;
+box-shadow: none;
+padding-top: 2px;
+height: 23px;
+font-size: 11px !important;
+margin-top: 2px;
+padding-left: 2px;
+padding-right: 2px;
+font-size: 10px !important;
+border: 2px solid #32bfea !important;
+" class="SelectClassForAllSelects">
+<option>Chart</option><option>Data</option>
+</select>
+<p id="SSS" style="margin: 0px;font-size: 10px;font-family: &quot;Roboto&quot;;font-weight: 500;color: #5e5d5d;padding-top: 13px;padding-left: 7px;display: inline-block;" class="AllDivsAnimationNow">Height</p>
+<input name="ID_VIEWHEIGHT" id="ID_VIEWHEIGHT" onchange="ViewSetHeightFunction()" style="
+width: 33px;
+padding: 4px;
+font-size: 11px;
+color: black;
+border: none;
+border-radius: 0px; /*! box-shadow: 0px 1px 1px #a8acae; */ /*! background: linear-gradient(90deg, rgb(167, 172, 174) 0%, rgb(227, 188, 114) 12%, rgb(228, 237, 240) 58%); */
+/*! background: linear-gradient( to bottom, #3cf 0%, #fff 100% ); */
+display: inline-block;
+margin-bottom: 5px;
+margin: 0 auto;
+border: 1px solid #cbcdce;
+border-radius: 5px; /*! display: inline; */ /*! float: right; */
+height: 29px;
+background: white;
+cursor: pointer;
+border-radius: 8px;
+margin-right: 0px;
+float: none;
+box-shadow: none;
+padding-top: 3px;
+height: 28px;
+font-size: 11px !important;
+margin-top: 2px;
+padding-left: 4px;
+padding-right: 4px;
+text-align: center;
+height: 23px;
+font-size: 11px !important;
+margin-top: 2px;
+padding-left: 2px;
+padding-right: 2px;
+font-size: 10px !important;
+border: 2px solid #32bfea !important;
+" class="SelectClassForAllSelects">
+<p id="SSS" style="margin: 0px;font-size: 10px;font-family: &quot;Roboto&quot;;font-weight: 500;color: #5e5d5d;padding-top: 13px;padding-left: 7px;display: inline-block;" class="AllDivsAnimationNow">Width</p>
+<input name="ID_VIEWWIDTH" id="ID_VIEWWIDTH" onchange="ViewSetWidthFunction()" style="
+width: 33px;
+padding: 4px;
+font-size: 11px;
+color: black;
+border: none;
+border-radius: 0px; /*! box-shadow: 0px 1px 1px #a8acae; */ /*! background: linear-gradient(90deg, rgb(167, 172, 174) 0%, rgb(227, 188, 114) 12%, rgb(228, 237, 240) 58%); */
+/*! background: linear-gradient( to bottom, #3cf 0%, #fff 100% ); */
+display: inline-block;
+margin-bottom: 5px;
+margin: 0 auto;
+border: 1px solid #cbcdce;
+border-radius: 5px; /*! display: inline; */ /*! float: right; */
+height: 29px;
+background: white;
+cursor: pointer;
+border-radius: 8px;
+margin-right: 0px;
+float: none;
+box-shadow: none;
+padding-top: 3px;
+height: 28px;
+font-size: 11px !important;
+margin-top: 2px;
+padding-left: 4px;
+padding-right: 4px;
+text-align: center;
+height: 23px;
+font-size: 11px !important;
+margin-top: 2px;
+padding-left: 2px;
+padding-right: 2px;
+font-size: 10px !important;
+border: 2px solid #32bfea !important;
+" class="SelectClassForAllSelects">
+
+
+
+
+                                    
+
+
+
+                                </div>
+<div id="ID_CHARTTOPDIV" style="background: #f0f0f0; height: 110px; border-bottom: 1px solid rgb(234, 227, 227); display: block;padding-top: 0px;" class="AllDivsAnimationNow">
+                                    <p style="margin: 0px;font-size: 10px;font-family: &quot;Roboto&quot;;border-bottom: 1px solid #cac4c4;text-align: center;color: #514e4e;height: 27px;font-weight: 500;background: #f0e6e6;padding-top: 4px;margin-bottom: 10px;">FOR CHARTING</p>
+<p style="margin: 0px;font-size: 11px;font-family: &quot;Roboto&quot;;color: #717171;padding-left: 7px;padding-top: 7px;display: inline-block;" class="AllDivsAnimationNow">Start Column:</p>
+                                    <input type="text" id="ID_STARTCOL" name="ID_STARTCOL" placeholder="80" style="display: inline-block;width: 28px;padding: 0px;/*! padding-left: 9px; */text-align: center;">
+                                    <p style="margin: 0px;font-size: 11px;font-family: &quot;Roboto&quot;;color: #717171;padding-left: 7px;padding-top: 7px;display: inline-block;" class="AllDivsAnimationNow">End Column:</p>
+                                    <input type="text" id="ID_ENDCOL" name="ID_ENDCOL" placeholder="90" style="display: inline-block;width: 28px;padding: 0px;/*! padding-left: 9px; */text-align: center;">
+
+                                    <div style="display: inline-block;float: none;margin-top: 14px;" class="AllDivsAnimationNow">
+
+                                        <p id="SSS" style="margin: 0px;font-size: 10px;font-family: &quot;Roboto&quot;;/*! font-weight: 500; *//*! color: #5e5d5d; */padding-top: 8px;padding-left: 7px;display: inline-block;margin: 0px;font-size: 11px;font-family: &quot;Roboto&quot;;color: #717171;padding-left: 7px;padding-top: 7px;display: inline-block;" class="AllDivsAnimationNow">Chart Type</p>
+
+                                        <select name="ID_CHARTTYPE" id="ID_CHARTTYPE" onchange="ViewSetChangeChartTypeFunction()" style="
+                                              width: 58px;
+                                              padding: 4px;
+                                              font-size: 11px;
+                                              color: black;
+                                              border: none;
+                                              border-radius: 0px; /*! box-shadow: 0px 1px 1px #a8acae; */ /*! background: linear-gradient(90deg, rgb(167, 172, 174) 0%, rgb(227, 188, 114) 12%, rgb(228, 237, 240) 58%); */
+                                              /*! background: linear-gradient( to bottom, #3cf 0%, #fff 100% ); */
+                                              display: inline-block;
+                                              margin-bottom: 5px;
+                                              margin: 0 auto;
+                                              border: 1px solid #32bfea;
+                                              border-radius: 5px; /*! display: inline; */ /*! float: right; */
+                                              height: 26px;
+                                              background: white;
+                                              cursor: pointer;
+                                              border-radius: 8px;
+                                              margin-right: 10px;
+                                              box-shadow: none;
+                                              margin-left: 8px;
+                                              padding-top: 0px;
+                                              " class="SelectClassForAllSelects">
+                            <option>pie</option><option>column</option>
+                                              </select>
+
+
+                                    </div>
+
+
+
+                                    <button id="ID_UPDATECHART" onclick="ViewSetChartUpdateFunction()" class="OfficeButton AllDivsAnimationNow" style="
+    padding: 1px;
+    padding-left: 5px;
+    padding-right: 5px; /*! border: 2px solid #ca7d2c; */
+    background: white;
+    font-size: 12px;
+    font-family: 'Calibri';
+    margin-left: 0px;
+    float: none;
+    padding-bottom: 8px;
+    margin-left: 10px;
+    margin: 0px;
+    margin-left: 0px;
+    float: right; /*! margin-bottom: 10px; */
+    border: 1px solid #cac8c8 !important;
+    margin-right: 0px;
+    padding-bottom: 3px;
+    margin-top: 1px;
+    margin-left: 10px;
+    border-radius: 5px !important;
+    margin-top: 2px;
+    margin-right: 5px;
+    background: white !important;
+    /*! border-top: 0px !important; */
+    /*! border-left: 0px !important; */
+    /*! border-right: 0px !important; */
+    box-shadow: ne;
+    margin-top: 15px;
+    ">
+    <i class="far fa-check-circle" aria-hidden="true" style="padding-right: 5px; padding-top: 5px"></i>Update Chart
+    </button>
+
+                                </div>
+</div>
+
+                                <div id="ID_VIEWTABLE" style="background: white; height: 327px; overflow: auto; display: block;width: 100%;height: 100%;" class="AllDivsAnimationNow"></div>
+                                
+                                <div id="ID_VIEWCHARTDIV" style="display: none; height: 100%; border-right: 0px solid rgb(217, 216, 216); width: 100%; overflow: hidden; border-radius: 0px 0px 50px;background: white;" class="AllDivsAnimationNow" data-highcharts-chart="3"></div>
+
+                            </div>

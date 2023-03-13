@@ -1,0 +1,42 @@
+BASIC,Collecting Module Target: AVD Host Pool RDP Properties Assessment
+Module Target: Azure
+Connection String: Connect-AzAccount#
+ModulesToLoad: Az.Accounts#Az.Desktop.Virtualization#
+View Type: Single Column
+View Tenant: Customer-F-AZURE Tenant
+View Module: AVD Host Pool RDP Properties Assessment
+View Module Target: Azure
+BASIC,Checking Tenant and Module Targets...
+Tenant Target Reported is AZURE-AVD AND Module Target is Azure
+Checking if both the targets match...
+BASIC,Module and Tenant Targets matched-OK
+BASIC,Required PowerShell Modules Were Loaded Successfully!
+FinalResultFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\AVD_Host_Pool_RDP_Properties_AssessmentCustomer-F-AZURE_Tenant.CSV
+FinalLogFile: C:\CloudDynamicFramework\public\12345678\Users\NirmalTest\AVD_Host_Pool_RDP_Properties_AssessmentCustomer-F-AZURE_Tenant.LOG
+BASIC,View Module Target:AZURE
+Collecting Tenant Details:Customer-F-AZURE Tenant
+26-02-2023 07:23:52,SPN Guid ID: d86f511a-22ac-413d-8d43-0c0323fd478d
+26-02-2023 07:23:52,SPN Pass: NOTSHOWN
+26-02-2023 07:23:52,SPN Sub ID: 444fcdb5-d696-4caf-9af2-8f2269152ed5
+26-02-2023 07:23:52,SPN Tenant ID: 2e7629c0-a795-4731-8ec5-08ec94449edc
+Starting Connection Now...
+Connection String READY for Azure
+String Item: Connect-AzAccount
+Processing Connection String: $R = Invoke-Command -ScriptBlock{param($SPNTenID,$SPNSubID,$Credential) Connect-AzAccount -Tenant $SPNTenID -Subscription $SPNSubID -Credential $Credential -ServicePrincipal -WarningAction ignore } -ArgumentList $SPNTenID,$SPNSubID,$Credential
+Checking if already connected...
+NOT Already Connected...
+BASIC,Connecting To: d86f511a-22ac-413d-8d43-0c0323fd478d Using Connection String: $R = Invoke-Command -ScriptBlock{param($SPNTenID,$SPNSubID,$Credential) Connect-AzAccount -Tenant $SPNTenID -Subscription $SPNSubID -Credential $Credential -ServicePrincipal -WarningAction ignore } -ArgumentList $SPNTenID,$SPNSubID,$Credential
+BASIC,Connection Success
+Recording in AlreadyConnected
+BASIC,Executing Module: AVD Host Pool RDP Properties Assessment
+BASIC,View Module Code:FOUND
+CODE:
+BASIC,[START: MODULE CODE: EXECUTING]
+BASIC,View Module Executed...
+BASIC,Error Occured
+Error: You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression. You cannot call a method on a null-valued expression.
+BASIC,[END: MODULE CODE: EXECUTING]
+COPY FILES IN TRP: 12345678
+Copying for USER: NirmalTest
+FINAL VIEW RESULT: SUCCESS [A New RDP Assessment View]
+VIEWEXECUTED,DONE,

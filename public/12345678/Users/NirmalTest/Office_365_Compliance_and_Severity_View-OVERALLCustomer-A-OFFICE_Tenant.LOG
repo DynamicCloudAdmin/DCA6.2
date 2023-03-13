@@ -1,0 +1,14 @@
+BASIC,Collecting Module Target: Office 365 Compliance and Severity View-OVERALL
+Module Target: 
+Connection String: 
+ModulesToLoad: 
+View Type: Single Column
+View Tenant: Customer-A-OFFICE Tenant
+View Module: Office 365 Compliance and Severity View-OVERALL
+View Module Target: 
+BASIC,Checking Tenant and Module Targets...
+Tenant Target Reported is OFFICE AND Module Target is 
+Checking if both the targets match...
+BASIC,Error: Module and Tenant Targets DO NOT Match.
+Aborting...
+VIEWEXECUTED,DONE,

@@ -1,0 +1,91 @@
+AVD Sessions VIEW#CredCode#$STR = "Item,Total"
+AVD Sessions VIEW#CredCode#Add-Content $FinalResultFile $STR
+AVD Sessions VIEW#CredCode#
+AVD Sessions VIEW#CredCode#$TotActive = 0
+AVD Sessions VIEW#CredCode#$TotDisconnected = 0
+AVD Sessions VIEW#CredCode#$TotStale = 0
+AVD Sessions VIEW#CredCode#$TotNormal = 0
+AVD Sessions VIEW#CredCode#
+AVD Sessions VIEW#CredCode#$Error.Clear()
+AVD Sessions VIEW#CredCode#$R = Get-AzWVDHostPool | Select-Object *
+AVD Sessions VIEW#CredCode#IF ($Error.Count -eq 0)
+AVD Sessions VIEW#CredCode#{
+AVD Sessions VIEW#CredCode#	foreach ($Item in $R)
+AVD Sessions VIEW#CredCode#	{
+AVD Sessions VIEW#CredCode#		$ThisLine = $Item.ApplicationGroupReference
+AVD Sessions VIEW#CredCode#		$R = $ThisLine
+AVD Sessions VIEW#CredCode#		$A, $B, $C, $D, $E, $F = $R.Split("/")
+AVD Sessions VIEW#CredCode#		
+AVD Sessions VIEW#CredCode#		$FinalResGroup = $E
+AVD Sessions VIEW#CredCode#		$HostPoolName = $Item.Name
+AVD Sessions VIEW#CredCode#		
+AVD Sessions VIEW#CredCode#		$RC = Get-AzWvdUserSession -ResourceGroupName $FinalResGroup -HostPoolName $HostPoolName | Select-Object *
+AVD Sessions VIEW#CredCode#		foreach ($Item in $RC)
+AVD Sessions VIEW#CredCode#		{
+AVD Sessions VIEW#CredCode#			$NewID = $Item.Name
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$Z = $NewID
+AVD Sessions VIEW#CredCode#			$A, $B, $C = $Z.Split("/")
+AVD Sessions VIEW#CredCode#			$FinalID = $C
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$Z = $NewID
+AVD Sessions VIEW#CredCode#			$A, $B, $C = $Z.Split("/")
+AVD Sessions VIEW#CredCode#			$FinalSessionHost = $B
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$Z = $Item.ID
+AVD Sessions VIEW#CredCode#			$A, $B, $C, $D, $E, $F = $Z.Split("/")
+AVD Sessions VIEW#CredCode#			$FinalResGroup = $E
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$B, $FinalHostName = $HostName.Split("/")
+AVD Sessions VIEW#CredCode#			$HostWithoutDots, $C = $FinalHostName.Split(".")
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$VMStatus = "Unknown"
+AVD Sessions VIEW#CredCode#			$AccState = "Normal"
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$ThisHostToCheck, $RC = $FinalSessionHost.Split(".")
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			foreach ($VMNow in $AllVMCSV)
+AVD Sessions VIEW#CredCode#			{
+AVD Sessions VIEW#CredCode#				$ThisVMNow = $VMNow.VMName
+AVD Sessions VIEW#CredCode#				IF ($ThisVMNow.ToLower() -eq $ThisHostToCheck.ToLower())
+AVD Sessions VIEW#CredCode#				{
+AVD Sessions VIEW#CredCode#					$VMStatus = $VMNow.VMStatus
+AVD Sessions VIEW#CredCode#					break
+AVD Sessions VIEW#CredCode#				}
+AVD Sessions VIEW#CredCode#			}
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#			$SessState = $Item.SessionState
+AVD Sessions VIEW#CredCode#			IF ($SessState -eq "Active")
+AVD Sessions VIEW#CredCode#			{				
+AVD Sessions VIEW#CredCode#				$TotActive++
+AVD Sessions VIEW#CredCode#			}
+AVD Sessions VIEW#CredCode#			IF ($SessState -eq "Disconnected")
+AVD Sessions VIEW#CredCode#			{
+AVD Sessions VIEW#CredCode#				$TotDisconnected++
+AVD Sessions VIEW#CredCode#			}
+AVD Sessions VIEW#CredCode#			IF ($SessState -eq "Active" -and $VMStatus -eq "VM running")
+AVD Sessions VIEW#CredCode#			{
+AVD Sessions VIEW#CredCode#				$AccState = "Normal"
+AVD Sessions VIEW#CredCode#				$TotNormal++
+AVD Sessions VIEW#CredCode#			}
+AVD Sessions VIEW#CredCode#			IF ($SessState -eq "Active" -and $VMStatus -ne "VM running")
+AVD Sessions VIEW#CredCode#			{
+AVD Sessions VIEW#CredCode#				$AccState = "Stale"
+AVD Sessions VIEW#CredCode#				$TotStale++
+AVD Sessions VIEW#CredCode#			}
+AVD Sessions VIEW#CredCode#			
+AVD Sessions VIEW#CredCode#		}
+AVD Sessions VIEW#CredCode#		
+AVD Sessions VIEW#CredCode#	}
+AVD Sessions VIEW#CredCode#	
+AVD Sessions VIEW#CredCode#}
+AVD Sessions VIEW#CredCode#
+AVD Sessions VIEW#CredCode#$STR = "Active," + $TotActive.ToString()
+AVD Sessions VIEW#CredCode#Add-Content $FinalResultFile $STR
+AVD Sessions VIEW#CredCode#$STR = "Disconnected," + $TotDisconnected.ToString()
+AVD Sessions VIEW#CredCode#Add-Content $FinalResultFile $STR
+AVD Sessions VIEW#CredCode#$STR = "Stale," + $TotStale.ToString()
+AVD Sessions VIEW#CredCode#Add-Content $FinalResultFile $STR
+AVD Sessions VIEW#CredCode#$STR = "Normal," + $TotNormal.ToString()
+AVD Sessions VIEW#CredCode#Add-Content $FinalResultFile $STR
+AVD Sessions VIEW#CredCode#
