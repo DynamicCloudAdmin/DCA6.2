@@ -1,202 +1,102 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "metadata": {
+      "_generator": {
+        "name": "bicep",
+        "version": "0.5.6.12127",
+        "templateHash": "10602523904429381366"
+      }
+    },
     "parameters": {
-        "AppServiceName": {
-            "type": "string",
-            "defaultValue": "myappservice"
+      "webAppName": {
+        "type": "string",
+        "defaultValue": "[format('webApp-{0}', uniqueString(resourceGroup().id))]",
+        "minLength": 2,
+        "metadata": {
+          "description": "Web app name."
         }
+      },
+      "location": {
+        "type": "string",
+        "defaultValue": "[resourceGroup().location]",
+        "metadata": {
+          "description": "Location for all resources."
+        }
+      },
+      "sku": {
+        "type": "string",
+        "defaultValue": "F1",
+        "metadata": {
+          "description": "The SKU of App Service Plan."
+        }
+      },
+      "linuxFxVersion": {
+        "type": "string",
+        "defaultValue": "DOTNETCORE|3.0",
+        "metadata": {
+          "description": "The Runtime stack of current web app"
+        }
+      },
+      "repoUrl": {
+        "type": "string",
+        "defaultValue": " ",
+        "metadata": {
+          "description": "Optional Git Repo URL"
+        }
+      }
     },
-    "functions": [],
-    "variables": {},
-    "resources": [{
-        "name": "[toLower('ubuntuVM1storage')]",
-        "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2021-04-01",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "displayName": "ubuntuVM1 Storage Account"
-        },
+    "variables": {
+      "appServicePlanPortalName": "[format('AppServicePlan-{0}', parameters('webAppName'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2021-02-01",
+        "name": "[variables('appServicePlanPortalName')]",
+        "location": "[parameters('location')]",
         "sku": {
-            "name": "Standard_LRS"
+          "name": "[parameters('sku')]"
         },
-        "kind": "Storage"
-    },
-    {
-        "name": "ubuntuVM1-PublicIP",
-        "type": "Microsoft.Network/publicIPAddresses",
-        "apiVersion": "2020-11-01",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "displayName": "PublicIPAddress"
+        "kind": "linux",
+        "properties": {
+          "reserved": true
+        }
+      },
+      {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2021-02-01",
+        "name": "[parameters('webAppName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "httpsOnly": true,
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
+          "siteConfig": {
+            "linuxFxVersion": "[parameters('linuxFxVersion')]",
+            "minTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly"
+          }
         },
-        "properties": {
-            "publicIPAllocationMethod": "Dynamic",
-            "dnsSettings": {
-                "domainNameLabel": "[toLower('ubuntuVM1')]"
-            }
-        }
-    },
-    {
-        "name": "ubuntuVM1-nsg",
-        "type": "Microsoft.Network/networkSecurityGroups",
-        "apiVersion": "2020-11-01",
-        "location": "[resourceGroup().location]",
-        "properties": {
-            "securityRules": [
-                {
-                    "name": "nsgRule1",
-                    "properties": {
-                        "description": "description",
-                        "protocol": "Tcp",
-                        "sourcePortRange": "*",
-                        "destinationPortRange": "22",
-                        "sourceAddressPrefix": "*",
-                        "destinationAddressPrefix": "*",
-                        "access": "Allow",
-                        "priority": 100,
-                        "direction": "Inbound"
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "ubuntuVM1-VirtualNetwork",
-        "type": "Microsoft.Network/virtualNetworks",
-        "apiVersion": "2020-11-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Network/networkSecurityGroups', 'ubuntuVM1-nsg')]"
-        ],
-        "tags": {
-            "displayName": "ubuntuVM1-VirtualNetwork"
-        },
-        "properties": {
-            "addressSpace": {
-                "addressPrefixes": [
-                    "10.0.0.0/16"
-                ]
-            },
-            "subnets": [
-                {
-                    "name": "ubuntuVM1-VirtualNetwork-Subnet",
-                    "properties": {
-                        "addressPrefix": "10.0.0.0/24",
-                        "networkSecurityGroup": {
-                            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'ubuntuVM1-nsg')]"
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "ubuntuVM1-NetworkInterface",
-        "type": "Microsoft.Network/networkInterfaces",
-        "apiVersion": "2020-11-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]",
-            "[resourceId('Microsoft.Network/virtualNetworks', 'ubuntuVM1-VirtualNetwork')]"
-        ],
-        "tags": {
-            "displayName": "ubuntuVM1-NetworkInterface"
-        },
-        "properties": {
-            "ipConfigurations": [
-                {
-                    "name": "ipConfig1",
-                    "properties": {
-                        "privateIPAllocationMethod": "Dynamic",
-                        "publicIPAddress": {
-                            "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'ubuntuVM1-PublicIP')]"
-                        },
-                        "subnet": {
-                            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', 'ubuntuVM1-VirtualNetwork', 'ubuntuVM1-VirtualNetwork-Subnet')]"
-                        }
-                    }
-                }
-            ]
-        }
-    },
-    {
-        "name": "[parameters('AppServiceName')]",
-        "type": "Microsoft.Compute/virtualMachines",
-        "apiVersion": "2021-03-01",
-        "location": "[resourceGroup().location]",
-        "dependsOn": [
-            "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
-        ],
-        "tags": {
-            "displayName": "ubuntuVM1"
-        },
-        "properties": {
-            "hardwareProfile": {
-                "vmSize": "Standard_A2_v2"
-            },
-            "osProfile": {
-                "computerName": "ubuntuVM1",
-                "adminUsername": "adminUsername",
-                "adminPassword": "adminPassword"
-            },
-            "storageProfile": {
-                "imageReference": {
-                    "publisher": "Canonical",
-                    "offer": "UbuntuServer",
-                    "sku": "16.04-LTS",
-                    "version": "latest"
-                },
-                "osDisk": {
-                    "name": "ubuntuVM1-OSDisk",
-                    "caching": "ReadWrite",
-                    "createOption": "FromImage"
-                }
-            },
-            "networkProfile": {
-                "networkInterfaces": [
-                    {
-                        "id": "[resourceId('Microsoft.Network/networkInterfaces', 'ubuntuVM1-NetworkInterface')]"
-                    }
-                ]
-            },
-            "diagnosticsProfile": {
-                "bootDiagnostics": {
-                    "enabled": true,
-                    "storageUri": "[reference(resourceId('Microsoft.Storage/storageAccounts/', toLower('ubuntuVM1storage'))).primaryEndpoints.blob]"
-                }
-            }
-        }
-    }, 
-    {
-        "name": "ubuntuVM1/customScript1",
-        "type": "Microsoft.Compute/virtualMachines/extensions",
-        "apiVersion": "2021-03-01",
-        "location": "[resourceGroup().location]",
-        "tags": {
-            "displayName": "customScript1 for Linux VM"
+        "identity": {
+          "type": "SystemAssigned"
         },
         "dependsOn": [
-            "[resourceId('Microsoft.Compute/virtualMachines', 'ubuntuVM1')]"
-        ],
+          "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+        ]
+      },
+      {
+        "condition": "[contains(parameters('repoUrl'), 'http')]",
+        "type": "Microsoft.Web/sites/sourcecontrols",
+        "apiVersion": "2021-02-01",
+        "name": "[format('{0}/{1}', parameters('webAppName'), 'web')]",
         "properties": {
-            "publisher": "Microsoft.Azure.Extensions",
-            "type": "CustomScript",
-            "typeHandlerVersion": "2.1",
-            "autoUpgradeMinorVersion": true,
-            "settings": {
-                "fileUris": [
-                    "[concat('artifactsLocation', '/scripts/customScript.sh', 'artifactsLocationSasToken')]"
-                ]
-            },
-            "protectedSettings": {
-                "commandToExecute": "apt-get update && apt-get install unzip -y && unzip SampleApp.zip",
-                "storageAccountName": "[toLower('ubuntuVM1storage')]",
-                "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', toLower('ubuntuVM1storage')), '2021-03-01').keys[0].value]"
-            }
-        }
-    }
-    
-    ],
-    "outputs": {}
-}
+          "repoUrl": "[parameters('repoUrl')]",
+          "branch": "master",
+          "isManualIntegration": true
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+        ]
+      }
+    ]
+  }
