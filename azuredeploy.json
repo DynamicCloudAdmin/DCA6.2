@@ -60,7 +60,8 @@
         "siteConfig": {
           "windowsFxVersion": "NODE|14-lts",
           "minTlsVersion": "1.2",
-          "ftpsState": "FtpsOnly"
+          "ftpsState": "FtpsOnly",
+          "appCommandLine": "powershell -Command \"git clone git clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure -path C:\\home\\site\\wwwroot\\app; cd C:\\home\\site\\wwwroot\\app; Expand-Archive -Path app.zip -DestinationPath C:\\home\\site\\wwwroot\\app\\files\""
         }
       },
       "identity": {
@@ -69,19 +70,6 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ]
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('webAppName'), '/web')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-      ],
-      "properties": {
-        "windowsFxVersion": "NODE|14-lts",
-        // clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure and extract to app.zip
-        "commandLine": "powershell -Command \"git clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure -path C:\\home\\site\\wwwroot\\app; cd C:\\home\\site\\wwwroot\\app; Expand-Archive -Path app.zip -DestinationPath C:\\home\\site\\wwwroot\\app\\files\""
-      }
     }
   ]
 }
