@@ -42,7 +42,7 @@
       "name": "[variables('appServicePlanPortalName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('AppServicePlan')]",
+        "name": "[parameters('AppServicePlan')]"
       },
       "kind": "windows",
       "properties": {
