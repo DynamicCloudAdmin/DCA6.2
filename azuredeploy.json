@@ -61,7 +61,7 @@
           "windowsFxVersion": "NODE|14-lts",
           "minTlsVersion": "1.2",
           "ftpsState": "FtpsOnly",
-          "appCommandLine": "powershell -Command \"git clone git clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure -path C:\\home\\site\\wwwroot\\app; cd C:\\home\\site\\wwwroot\\app; Expand-Archive -Path app.zip -DestinationPath C:\\home\\site\\wwwroot\\app\\files\""
+          "appCommandLine": "git clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure --path /home/site/wwwroot && unzip /home/site/wwwroot/DCA6.2/SampleApp.zip -d /home/site/wwwroot"
         }
       },
       "identity": {
