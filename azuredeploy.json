@@ -11,7 +11,7 @@
   "parameters": {
     "webAppName": {
       "type": "string",
-      "defaultValue": "Web App Name",
+      "defaultValue": "WebAppName",
       "minLength": 2,
       "metadata": {
         "description": "Web app name."
@@ -42,12 +42,12 @@
       "name": "[variables('appServicePlanPortalName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('AppServicePlan')]"
+        "name": "[parameters('AppServicePlan')]",
       },
       "kind": "windows",
       "properties": {
-        "reserved": true
-      }
+        "reserved": false
+      },
     },
     {
       "type": "Microsoft.Web/sites",
