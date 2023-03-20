@@ -79,7 +79,8 @@
       ],
       "properties": {
         "windowsFxVersion": "NODE|14-lts",
-        "commandLine": "powershell -command \"Expand-Archive -Path 'D:\\home\\site\\wwwroot\\app.zip' -DestinationPath 'D:\\home\\site\\wwwroot' -Force\""
+        // clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure and extract to app.zip
+        "commandLine": "powershell -Command \"git clone https://github.com/DynamicCloudAdmin/DCA6.2/tree/feat/deployToAzure -path C:\\home\\site\\wwwroot\\app; cd C:\\home\\site\\wwwroot\\app; Expand-Archive -Path app.zip -DestinationPath C:\\home\\site\\wwwroot\\app\\files\""
       }
     }
   ]
