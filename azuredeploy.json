@@ -11,7 +11,7 @@
   "parameters": {
     "webAppName": {
       "type": "string",
-      "defaultValue": "  ",
+      "defaultValue": "Web App Name",
       "minLength": 2,
       "metadata": {
         "description": "Web app name."
@@ -19,30 +19,16 @@
     },
     "location": {
       "type": "string",
-      "defaultValue": " ",
+      "defaultValue": "eastus",
       "metadata": {
         "description": "Location for all resources."
       }
     },
-    "sku": {
+    "AppServicePlan": {
       "type": "string",
       "defaultValue": "F1",
       "metadata": {
         "description": "The SKU of App Service Plan."
-      }
-    },
-    "windowsFxVersion": {
-      "type": "string",
-      "defaultValue": "NODE|14-lts",
-      "metadata": {
-        "description": "The Runtime stack of current web app"
-      }
-    },
-    "repoUrl": {
-      "type": "string",
-      "defaultValue": " ",
-      "metadata": {
-        "description": "Optional Git Repo URL"
       }
     }
   },
@@ -56,7 +42,7 @@
       "name": "[variables('appServicePlanPortalName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('sku')]"
+        "name": "[parameters('AppServicePlan')]"
       },
       "kind": "windows",
       "properties": {
@@ -72,7 +58,7 @@
         "httpsOnly": true,
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
         "siteConfig": {
-          "windowsFxVersion": "[parameters('windowsFxVersion')]",
+          "windowsFxVersion": "NODE|14-lts",
           "minTlsVersion": "1.2",
           "ftpsState": "FtpsOnly"
         }
@@ -85,18 +71,15 @@
       ]
     },
     {
-      "condition": "[contains(parameters('repoUrl'), 'http')]",
-      "type": "Microsoft.Web/sites/sourcecontrols",
+      "type": "Microsoft.Web/sites/config",
       "apiVersion": "2021-02-01",
-      "name": "[format('{0}/{1}', parameters('webAppName'), 'web')]",
-      "properties": {
-        "repoUrl": "[parameters('repoUrl')]",
-        "branch": "master",
-        "isManualIntegration": true
-      },
+      "name": "[concat(parameters('webAppName'), '/web')]",
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-      ]
+      ],
+      "properties": {
+        "commandLine": "powershell -command \"Expand-Archive -Path 'D:\\home\\site\\wwwroot\\app.zip' -DestinationPath 'D:\\home\\site\\wwwroot' -Force\""
+      }
     }
   ]
 }
