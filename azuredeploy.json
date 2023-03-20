@@ -78,6 +78,17 @@
         "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
       ],
       "properties": {
+        "linuxFxVersion": "NODE|14-lts"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2021-02-01",
+      "name": "[concat(parameters('webAppName'), '/web')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+      ],
+      "properties": {
         "commandLine": "powershell -command \"Expand-Archive -Path 'D:\\home\\site\\wwwroot\\app.zip' -DestinationPath 'D:\\home\\site\\wwwroot' -Force\""
       }
     }
