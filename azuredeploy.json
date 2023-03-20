@@ -78,7 +78,7 @@
         "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
       ],
       "properties": {
-        "linuxFxVersion": "NODE|14-lts",
+        "windowsFxVersion": "NODE|14-lts",
         "appCommandLine": "git clone https://github.com/DynamicCloudAdmin/DCA6.2 C:/home/site/wwwroot/DCA6.2 && unzip C:/home/site/wwwroot/DCA6.2/SamplesApp.zip -d C:/home/site/wwwroot"
       }
     }
