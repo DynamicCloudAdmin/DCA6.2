@@ -47,7 +47,7 @@
       "kind": "windows",
       "properties": {
         "reserved": false
-      },
+      }
     },
     {
       "type": "Microsoft.Web/sites",
