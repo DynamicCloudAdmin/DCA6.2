@@ -60,7 +60,7 @@
         "siteConfig": {
           "windowsFxVersion": "NODE|14-lts",
           "minTlsVersion": "1.2",
-          "ftpsState": "FtpsOnly",
+          "ftpsState": "FtpsOnly"
         }
       },
       "identity": {
@@ -80,6 +80,7 @@
       "properties": {
         "linuxFxVersion": "NODE|14-lts",
         "appCommandLine": "git clone https://github.com/DynamicCloudAdmin/DCA6.2 C:/home/site/wwwroot/DCA6.2 && unzip C:/home/site/wwwroot/DCA6.2/SamplesApp.zip -d C:/home/site/wwwroot"
+      }
     }
   ]
 }
