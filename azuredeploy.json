@@ -1,87 +1,88 @@
 {
-  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.5.6.12127",
-      "templateHash": "10602523904429381366"
-    }
-  },
-  "parameters": {
-    "webAppName": {
-      "type": "string",
-      "defaultValue": "WebAppName",
-      "minLength": 2,
-      "metadata": {
-        "description": "Web app name."
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "metadata": {
+      "_generator": {
+        "name": "bicep",
+        "version": "0.5.6.12127",
+        "templateHash": "10602523904429381366"
       }
     },
-    "location": {
-      "type": "string",
-      "defaultValue": "eastus",
-      "metadata": {
-        "description": "Location for all resources."
-      }
-    },
-    "AppServicePlan": {
-      "type": "string",
-      "defaultValue": "F1",
-      "metadata": {
-        "description": "The SKU of App Service Plan."
-      }
-    }
-  },
-  "variables": {
-    "appServicePlanPortalName": "[format('AppServicePlan-{0}', parameters('webAppName'))]"
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2021-02-01",
-      "name": "[variables('appServicePlanPortalName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('AppServicePlan')]"
-      },
-      "kind": "windows",
-      "properties": {
-        "reserved": false
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2021-02-01",
-      "name": "[parameters('webAppName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "httpsOnly": true,
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
-        "siteConfig": {
-          "windowsFxVersion": "NODE|14-lts",
-          "minTlsVersion": "1.2",
-          "ftpsState": "FtpsOnly"
+    "parameters": {
+      "webAppName": {
+        "type": "string",
+        "defaultValue": "WebAppName",
+        "minLength": 2,
+        "metadata": {
+          "description": "Web app name."
         }
       },
-      "identity": {
-        "type": "SystemAssigned"
+      "location": {
+        "type": "string",
+        "defaultValue": "eastus",
+        "metadata": {
+          "description": "Location for all resources."
+        }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
-      ]
-    },{
-      "type": "Microsoft.Web/sites/sourcecontrols",
-      "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('webAppName'), '/github')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "repoUrl": "https://github.com/DynamicCloudAdmin/projectFiles",
-          "branch": "main",
-          "isManualIntegration": false
+      "AppServicePlan": {
+        "type": "string",
+        "defaultValue": "F1",
+        "metadata": {
+          "description": "The SKU of App Service Plan."
+        }
+      }
+    },
+    "variables": {
+      "appServicePlanPortalName": "[format('AppServicePlan-{0}', parameters('webAppName'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2021-02-01",
+        "name": "[variables('appServicePlanPortalName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "[parameters('AppServicePlan')]"
+        },
+        "kind": "windows",
+        "properties": {
+          "reserved": false
+        }
       },
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-      ]
-    }
-  ]
-}
+      {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2021-02-01",
+        "name": "[parameters('webAppName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "httpsOnly": true,
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]",
+          "siteConfig": {
+            "windowsFxVersion": "NODE|14-lts",
+            "minTlsVersion": "1.2",
+            "ftpsState": "FtpsOnly"
+          }
+        },
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+        ]
+      },{
+        "type": "Microsoft.Web/sites/sourcecontrols",
+        "apiVersion": "2021-02-01",
+        "name": "[concat(parameters('webAppName'), '/github')]",
+        "location": "[parameters('location')]",
+        "properties": {
+            "repoUrl": "https://github.com/DynamicCloudAdmin/projectFiles",
+            "branch": "main",
+            "isManualIntegration": true
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+        ]
+      }
+    ]
+  }
+  
