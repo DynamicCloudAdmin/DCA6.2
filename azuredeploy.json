@@ -69,13 +69,14 @@
         "dependsOn": [
           "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
         ]
-      },{
+      },
+      {
         "type": "Microsoft.Web/sites/sourcecontrols",
         "apiVersion": "2021-02-01",
-        "name": "[concat(parameters('webAppName'), '/github')]",
+        "name": "[concat(parameters('webAppName'), '/Github')]",
         "location": "[parameters('location')]",
         "properties": {
-            "repoUrl": "https://github.com/DynamicCloudAdmin/projectFiles",
+          "repoUrl": "https://github.com/DynamicCloudAdmin/projectFiles",
             "branch": "main",
             "isManualIntegration": true
         },
