@@ -69,18 +69,19 @@
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ]
-    },
-    {
-      "type": "Microsoft.Web/sites/config",
+    },{
+      "type": "Microsoft.Web/sites/sourcecontrols",
       "apiVersion": "2021-02-01",
-      "name": "[concat(parameters('webAppName'), '/web')]",
+      "name": "[concat(parameters('webAppName'), '/github')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "repoUrl": "https://github.com/DynamicCloudAdmin/projectFiles",
+          "branch": "main",
+          "isManualIntegration": false
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-      ],
-      "properties": {
-        "windowsFxVersion": "NODE|14-lts",
-        "appCommandLine": "git clone https://github.com/DynamicCloudAdmin/DCA6.2 C:/home/site/wwwroot/DCA6.2 && unzip C:/home/site/wwwroot/DCA6.2/SamplesApp.zip -d C:/home/site/wwwroot"
-      }
+      ]
     }
   ]
 }
