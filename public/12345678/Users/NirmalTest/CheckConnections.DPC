@@ -1,2 +1,0 @@
-TenantName,ConString,ConStatus
-d86f511a-22ac-413d-8d43-0c0323fd478d,$R = Invoke-Command -ScriptBlock{param($SPNTenID,$SPNSubID,$Credential) Connect-AzAccount -Tenant $SPNTenID -Subscription $SPNSubID -Credential $Credential -ServicePrincipal -WarningAction ignore } -ArgumentList $SPNTenID,$SPNSubID,$Credential,SUCCESS
